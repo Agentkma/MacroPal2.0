@@ -8,9 +8,9 @@
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/normalize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/application.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/normalize.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="css/application.css" type="text/css" rel="stylesheet" media="screen" />
 </head>
 
 <body>
@@ -35,52 +35,54 @@
         <li><a href="#build">BUILD</a></li>
         <li><a href="#search">SEARCH</a></li>
     </ul>
-
-    <header id="header">
-        <div class="container">
-            <section class="row">
-                <div class="col s12 l6 offset-l6 pull-l6">
-                    <div class="section no-pad-bot tagLine" id="index-banner">
-                        <br><br>
-                        <h1 class="header center orange-text">MacroPal</h1>
-                        <div class="row center">
-                            <h5 class="header col s12 light">Easily find your daily nutrition requirements, build shopping lists, and search food nutrition info.</h5>
+    <div class="parallax-container">
+        <!-- <div class="parallax"><img src="images/parallax1.jpg"></div> -->
+        <div class="parallax fullscreen background">
+            <header id="header">
+                <div class="container">
+                    <section class="row">
+                        <div class="col s12 l6 offset-l6 pull-l6">
+                            <div class="section no-pad-bot tagLine" id="index-banner">
+                                <br><br>
+                                <h1 class="header center orange-text">MacroPal</h1>
+                                <div class="row center">
+                                    <h5 class="header col s12 light white-text">Easily find your daily nutrition requirements, build shopping lists, and search food nutrition info.</h5>
+                                </div>
+                                <div class="row center">
+                                    <a href="#calculate" id="download-button" class="btn-large waves-effect   darken-4 orange">Get Started</a>
+                                </div>
+                                <br><br>
+                            </div>
                         </div>
-                        <div class="row center">
-                            <a href="#calculate" id="download-button" class="btn-large waves-effect   darken-4 orange">Get Started</a>
-                        </div>
-                        <br><br>
-                    </div>
+                    </section>
                 </div>
-            </section>
+            </header>
         </div>
-    </header>
+    </div>
     <main role="main" class="main">
         <div class="container">
             <section class="section_Calc">
+                <h1 hidden>Calculation Setion</h1>
                 <div class="section">
                     <article class="">
-
                         <!--  Calories/Macros Results-->
                         <div class="row section_calc-submit">
                             <div class=" col s12  ">
 
                                 <h2 class="center-align ">Calories & Macros</h2>
                                 <div class="card-panel orange calcSection_CalDiv">
-                                    <span class="white-text "><h5>Your personalized daily nutrition needs are:</h5>
-                                <p>Total Calories: <span id="calories" class="article_submit-result calories "></span></p><br>
+                                    <h5 class="white-text ">Your personalized daily nutrition needs are:</h5>
+                                    <p>Total Calories: <span id="calories" class="article_submit-result calories "></span></p><br>
                                     <p>Total Protein: <span id="protein" class="article_submit-result protein"></span> grams</p><br>
                                     <p>Total Carbs: <span id="carb" class="article_submit-result carb "></span> grams</p><br>
                                     <p>Total Fat: <span id="fat" class="article_submit-result fat "></span> grams</p><br>
-                                    </span>
-                                </div>
 
+                                </div>
                             </div>
                             <div class="row center-align">
                                 <button id="calcResultReset" class="btn waves-effect orange  darken-4" type="submit" name="action">Reset
                     <i class="material-icons right">send</i>
                 </button>
-
                             </div>
 
                             <!-- End CAL/MACRO RESULTS Section-->
@@ -89,29 +91,31 @@
 
                         <!-- Calculate Form Section -->
                         <div id="calculate" class="row calcForm">
+
                             <form class="col s12">
-                                <legend>
-                                    <h2>Calculate</h2></legend>
-                                <div class="row">
-                                    <div class="input-field col s12 m6">
-                                        <select class="form_select-sex  ">
+                                <fieldset>
+                                    <legend>
+                                        <h2>Calculate</h2></legend>
+                                    <div class="row">
+                                        <div class="input-field col s12 m6">
+                                            <select class="form_select-sex  ">
                                           <option value="" disabled selected >Choose your option</option>
                                           <option value="male" class="orange-text" >Male</option>
                                           <option value="female">Female</option>
                                       </select>
-                                        <label>Sex</label>
-                                    </div>
-                                    <!-- </div>
+                                            <label>Sex</label>
+                                        </div>
+                                        <!-- </div>
 
                                 <div class="row"> -->
-                                    <div class="input-field col s12 m6">
-                                        <input id="age" type="text" class="validate form_input-age">
-                                        <label for="age">Age</label>
+                                        <div class="input-field col s12 m6">
+                                            <input id="age" type="text" class="validate form_input-age">
+                                            <label for="age">Age</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12 m6">
-                                        <select class="form_select-height">
+                                    <div class="row">
+                                        <div class="input-field col s12 m6">
+                                            <select class="form_select-height">
                               <option disabled selected value="" >Choose your option</option>
                               <option value="149.86">4'11"</option>
                               <option value="152.4">5'0"</option>
@@ -135,58 +139,59 @@
                               <option value="198.12">6'6"</option>
                               <option value="200.66">6'7"</option>
                             </select>
-                                        <label>Height</label>
-                                    </div>
-                                    <!-- </div>
+                                            <label>Height</label>
+                                        </div>
+                                        <!-- </div>
 
                                 <div class="row"> -->
-                                    <div class="input-field col s12 m6">
-                                        <input id="weight" type="text" class="validate form_input-weight">
-                                        <label for="age">Weight/lbs</label>
+                                        <div class="input-field col s12 m6">
+                                            <input id="weight" type="text" class="validate form_input-weight">
+                                            <label for="age">Weight/lbs</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="input-field col s12 m6">
-                                        <select class="form_select-activity">
+                                    <div class="row">
+                                        <div class="input-field col s12 m6">
+                                            <select class="form_select-activity">
                               <option value="" disabled selected >Choose your option</option>
                               <option value="1">Sedentary</option>
                               <option value="2">Lightly Active</option>
                               <option value="3">Moderately Active</option>
                               <option value="4">Very Active</option>
                             </select>
-                                        <label>Daily Activity Level</label>
-                                    </div>
-                                    <!-- </div>
+                                            <label>Daily Activity Level</label>
+                                        </div>
+                                        <!-- </div>
 
                                 <div class="row"> -->
-                                    <div class="input-field col s12 m6">
-                                        <select class="form_select-goal">
+                                        <div class="input-field col s12 m6">
+                                            <select class="form_select-goal">
                               <option value="" disabled selected  >Choose your option</option>
                               <option value="1">Lose Weight</option>
                               <option value="2">Maintain Weight</option>
                               <option value="3">Gain Weight</option>
                             </select>
-                                        <label>Goals</label>
+                                            <label>Goals</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <select class="form_select-diet">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <select class="form_select-diet">
                               <option value="" disabled selected  >Choose your option</option>
                               <option value="1">Low Carb</option>
                               <option value="2">Standard Balance</option>
                               <option value="3">Low Fat</option>
                             </select>
-                                        <label>Diet Type</label>
+                                            <label>Diet Type</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row center-align">
-                                    <button class="btn waves-effect orange  darken-4" type="submit" name="action">Submit
+                                    <div class="row center-align">
+                                        <button class="btn waves-effect orange  darken-4" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>
-                                </div>
+                                    </div>
+                                </fieldset>
                             </form>
                         </div>
                         <!-- End Calc Section -->
@@ -198,11 +203,11 @@
                 <h2 class="center  darken-3 grey-text "><i class="material-icons ">flash_on</i></h2>
                 <!-- Build Form Section -->
                 <div class="row section_BuildList">
-                    <form class="col s12 buildForm">
-                        <legend>
-                            <h2>Build</h2></legend>
 
-                        <fieldset class="foodOptionList" value="fieldset ">
+                    <form class="col s12 buildForm">
+                        <fieldset class="foodOptionList">
+                            <legend>
+                                <h2>Build</h2></legend>
                             <div class="input-field col s12 l4 foodChosen">
 
                                 <select multiple class=" proteinChosen form_build-select ">
@@ -223,7 +228,8 @@
                                 <label>Protein</label>
 
                                 <ul id="proteinChosen" class="collection with-header foodChosenList proteinList">
-                                    <h4 class="collection-header ">Protein List</h4>
+                                    <li>
+                                        <h4 class="collection-header ">Protein List</h4></li>
 
                                 </ul>
 
@@ -256,7 +262,8 @@
                                 <label>Carb</label>
 
                                 <ul id="carbChosen" class="collection with-header carbList foodChosenList ">
-                                    <h4 class="collection-header ">Carb List</h4>
+                                    <li>
+                                        <h4 class="collection-header ">Carb List</h4></li>
 
                                 </ul>
                                 <!-- </fieldset> -->
@@ -288,12 +295,13 @@
 
                                 <ul id="fatChosen" class="collection with-header fatList foodChosenList ">
 
-                                    <h4 class="collection-header ">Fat List</h4>
+                                    <li>
+                                        <h4 class="collection-header ">Fat List</h4></li>
                                 </ul>
                             </div>
 
                             <div class="row center-align ">
-                                <button class="btn waves-effect orange darken-4 " type="submit " name="action ">Submit
+                                <button class="btn waves-effect orange darken-4 " name="action ">Submit
                             <i class="material-icons right ">send</i>
                             </button>
                             </div>
@@ -306,8 +314,10 @@
 
 
 
-            <!-- Grocery List -->
+
             <div class="row  ">
+
+                <!-- Grocery List -->
                 <div class="col s12 m6 section_GroceryList">
                     <section>
                         <ul class="collection with-header groceryList">
@@ -338,14 +348,16 @@
                 <!-- <div class="col s12 m6"> -->
                 <h2 class="center grey-text darken-3  hide-on-med-and-up"><i class="material-icons ">flash_on</i></h2>
 
-                <div id="search" class="row section_SearchFoods">
-                    <div class="col s12 m6">
-                        <!-- Search Food Section -->
-                        <section class="section">
+                <section class="section">
+                    <!-- Search Food Section -->
+                    <div id="search" class="row section_SearchFoods">
+                        <div class="col s12 m6">
                             <form id="searchFoodsForm" class="col s12 ">
-                                <legend>
-                                    <h2>Search Foods</h2></legend>
+
                                 <fieldset>
+                                    <legend>
+                                        <h2>Search Food</h2></legend>
+
                                     <div class="row ">
                                         <div class="input-field col s12 ">
                                             <input id="foodName" type="text" class="validate ">
@@ -354,31 +366,37 @@
                                     </div>
 
                                     <div class="row center-align ">
-                                        <button class="btn waves-effect orange  darken-4 " type="submit " name="action ">Submit
+                                        <button class="btn waves-effect orange  darken-4 " name="action ">Submit
                             <i class="material-icons right ">send</i>
                           </button>
                                     </div>
                                 </fieldset>
                             </form>
-
-                            <!-- </div>  NUTRITION FACTS -->
-
-                            <div class="col s12 ">
-                                <div id="nutritionSearchResult" class="row ">
-
-                                    <h2 class="center grey-text grey darken-3  "><i class="material-icons ">description</i></h2>
-                                    <h5 class="center-align ">Nutrition Facts</h5>
-                                    <div id="foodSearchInfo" class="card-panel grey lighten-2 ">
-                                        <span class="grey-text ">Nutrition Info
-  </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- End Search Section-->
-                        </section>
+                        </div>
                     </div>
-                </div>
+                    <!-- End Search Section-->
+
+                    <!-- </div>  NUTRITION FACTS -->
+                    <div class="row " id="nutritionSearchResult">
+                        <div class="col s12 ">
+
+                            <h2 class="center white-text  darken-3  "><i class="material-icons ">description</i></h2>
+                            <h2 class="center-align ">Nutrition Facts</h2>
+                            <div id="foodSearchInfo" class="card-panel orange ">
+                                <!-- <h4 id="nutritionSearchResultSpan" class="grey-text ">Nutrition Info:
+                                </h4> -->
+                                <p>Food: <span id="foodSearch" class="article_submit-result food "></span></p><br>
+                                <p>Calories: <span id="caloriesSearch" class="article_submit-result calories "></span></p><br>
+                                <p>Protein: <span id="proteinSearch" class="article_submit-result protein"></span> grams</p><br>
+                                <p>Carbs: <span id="carbSearch" class="article_submit-result carb "></span> grams</p><br>
+                                <p>Fat: <span id="fatSearch" class="article_submit-result fat "></span> grams</p><br>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
 
 
                 <!--  -->
@@ -416,7 +434,7 @@
                 <div class="col l3 s12 ">
                     <h5 class="white-text ">Connect</h5>
                     <ul>
-                        <li><a class="white-text " href="mailto:kevin.m.anderson@icloud.com "><i class="material-icons">email</i></a></li>
+                        <li><a class="white-text btn-floating" href="mailto:kevin.m.anderson@icloud.com "><i class="material-icons">email</i></a></li>
                     </ul>
                 </div>
             </div>

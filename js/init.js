@@ -10,6 +10,7 @@
             closeOnClick: true
         } );
         $( 'select' ).material_select();
+        $( '.parallax' ).parallax();
 
 
 
@@ -22,23 +23,17 @@
         let urlEncodedOptionsArray = [];
         let foodDataArray = [];
 
-
-
-
-
-        let $selectedFood = $( '.form_build-select>option:selected' );
-
         //calc total grams needed per week o f each p, c, f
         let proteinForWeek
         let carbForWeek;
         let fatForWeek;
 
-
-
-
         // create array to hold the Grocery List food obj/ifo for each the protein, carb, fats
         let foodChoices;
         let foodNutritionData = {};
+
+        //search food nutrition data
+        let foodNutrition;
 
 
         const macrosCalPerGram = {
@@ -88,7 +83,7 @@
 
         /// Get Calculate Input Values
         $calcForm = $( '.calcForm' );
-        let $calcFormSex = $( '.form_select-sex option' );
+        $calcFormSex = $( '.form_select-sex option' );
         $calcFormAge = $( '.form_input-age' );
         $calcFormHeight = $( '.form_select-height option' );
         $calcFormWeight = $( '.form_input-weight' );
@@ -102,7 +97,6 @@
         $proteinResult = $( '#protein' );
         $carbResult = $( '#carb' );
         $fatResult = $( '#fat' );
-
         $calcResultResetBtn = $( '#calcResultReset' );
 
         //Build Select options for API
@@ -110,17 +104,23 @@
         $buildForm = $( '.form_build-select' );
         $buildFormSubmit = $( '.buildForm' );
 
+        let $selectedFood = $( '.form_build-select>option:selected' );
         $groceryList = $( '.groceryList' );
 
         //Search Food Results section
         $searchFoodForm = $( '#searchFoodsForm' );
-        $searchFoodResults = $( '#nutritionSearchResult' );
+        let $searchFoodName;
+        $searchFoodResultsDiv = $( '#nutritionSearchResult' );
+        $searchFoodResultsSpan = $( '#nutritionSearchResultSpan' );
+        $caloriesSearchResult = $( '#caloriesSearch' );
+        $proteinSearchResult = $( '#proteinSearch' );
+        $carbSearchResult = $( '#carbSearch' );
+        $fatSearchResult = $( '#fatSearch' );
+        $foodSearchResult = $( '#foodSearch' );
 
-        //Story: as a user I want to find out how many calories i need to loose, maintain, or gain weight
 
-
-        //FUNCTIONS   *****************
-        //******************************
+        //FUNCTIONS****************************************** FUNCTIONS
+        //************************************************************
 
         //funct calculates calories
         function calorieCalc( sex, age, weight, height, activity, goal ) {
@@ -175,11 +175,9 @@
         }
 
 
-
         // funct calc macro % and resulting gramm by diet type
         function calcMacroGrams( dietType ) {
             // mult calories by car/fat/pro each diet type
-
             macroGrams.protein = ( ( dietType.protein * calories ) / macrosCalPerGram.protein ).toFixed( 0 );
 
             macroGrams.carb = ( ( dietType.carb * calories ) / macrosCalPerGram.carb ).toFixed( 0 );
@@ -187,8 +185,6 @@
             macroGrams.fat = ( ( dietType.fat * calories ) / macrosCalPerGram.fat ).toFixed( 0 );
 
             return macroGrams;
-
-
         }
 
         //funct calculates macro  based on diet type
@@ -216,6 +212,16 @@
             $carbResult.text( macroGrams.carb );
             $fatResult.text( macroGrams.fat );
         }
+
+        function showSearchResults() {
+            $foodSearchResult.text( foodNutrition.name );
+            $caloriesSearchResult.text( foodNutrition.calories );
+            $proteinSearchResult.text( foodNutrition.protein );
+            $carbSearchResult.text( foodNutrition.carb );
+            $fatSearchResult.text( foodNutrition.fat );
+
+        }
+
 
         //funct to create an object with Build Food Items qty=1, size, name   from html list
         function buildOptionQtySizeNameData() {
@@ -259,12 +265,11 @@
         }
 
 
-
         ///funct: calc the amount in lbs of all food chosen for week
         function calcFoodAmountNeeded( choicesArray, foodEachChoice, foodType ) {
             //access the array of li for each P,C,F
 
-            for ( let food = 0; food < choicesArray.length; food++ ) {
+            for ( let food = 0; food < choicesArray.length-1; food++ ) {
 
                 var foodChoiceData = {};
                 //access the foodDataArray of food object data
@@ -290,7 +295,6 @@
 
 
         }
-
 
 
         //funct: create the Grocery List based on the pro/carb/fat chose and cal/macros per day
@@ -384,12 +388,66 @@
             } );
         }
 
+        //FUNCTION: CALL API FOR FOOD SEARCH
+        function ajaxApiSearchFood() {
+            nutritionAPI = "https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/nutrition-data?app_id=bb5716a9&app_key=4934103f145a552494351407efdecfcf&ingr=1%20medium%20";
+
+            $searchFoodName = $( '#foodName' ).val();
+            let name = $searchFoodName;
+
+            $searchFoodName = $searchFoodName.replace( ' ', '%20' );
+
+            nutritionAPI += $searchFoodName;
+            // console.log(nutritionAPI);
+
+            $.ajax( {
+                    type: "GET",
+                    url: nutritionAPI,
+                    data: foodNutritionData
+                } )
+                .then( function ( foodNutritionData ) {
+                    /// access thereturned object data to store the appropriate nutrition
 
 
-        //EVENT LISTENERS    *****************
-        //******************************
+                    let calories = foodNutritionData.calories;
+                    let weight = foodNutritionData.totalWeight;
 
-        // LISTENER EVENTfor Calc Form submission
+                    let fat = 0.01;
+                    if ( foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.FAT.quantity ) {
+                        fat = foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.FAT.quantity;
+                    }
+
+                    let carb = 0.01;
+                    if ( foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.CHOCDF ) {
+                        carb = foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.CHOCDF.quantity;
+                    }
+
+
+                    let protein = 0.01;
+
+                    if ( foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.PROCNT.quantity ) {
+                        protein = foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.PROCNT.quantity;
+                    }
+
+                    weight = weight.toFixed( 0 );
+                    calories = calories.toFixed( 0 );
+                    fat = fat.toFixed( 0 );
+                    protein = protein.toFixed( 0 );
+                    carb = carb.toFixed( 0 );
+
+
+                    foodNutrition = new FoodData( name, calories, weight, fat, protein, carb );
+
+                    //call function to add foodNutrition into results div
+                    showSearchResults();
+                } );
+        }
+
+
+        //EVENT LISTENERS    ***************************EVENT LISTENERS
+        //************************************************************
+
+        // LISTENER FOR Calc Form submission
         $calcForm.submit( ( event ) => {
             event.preventDefault();
 
@@ -430,16 +488,13 @@
 
         } );
 
-
-        // LISTENER EVENT for Results/Calc Form reset
+        // LISTENER FOR Results/Calc Form reset
         $calcResultResetBtn.click( ( event ) => {
             //hides results div
             $caloriesMacroResult.hide();
-
         } );
 
-
-        // LISTENER EVENT: when food is selected- add to build list
+        // LISTENER FOR when food is selected- add to BUILD LIST
         $( document ).on( 'change', '.form_build-select', function ( event ) {
             event.stopPropagation();
 
@@ -456,19 +511,14 @@
                 let newFood = createFoodLi( $selectedFoodText );
 
                 $( this ).parents( '.foodChosen' ).find( '.foodChosenList' ).append( newFood );
-
             } );
-
-
         } );
-
 
         // LISTENER EVENT:  when build submit button is clicked
         $buildFormSubmit.submit( ( event ) => {
             event.preventDefault();
             //reset the foodChoices Array
             foodChoices = [];
-
             //call function to create Grocery list
             createGroceryList();
         } );
@@ -476,24 +526,26 @@
         // LISTENER EVENT for Search Food  submission
         $searchFoodForm.submit( ( event ) => {
             event.preventDefault();
+            foodNutrition = {};
+            //call function for API call
+            ajaxApiSearchFood();
 
             //shows results div
-            $searchFoodResults.show();
+            $searchFoodResultsDiv.show();
         } );
 
-        //Funct Calls    *****************
-        //******************************
+
+
+
+        //FUNCTION CALLS  ******************************FUNCTION CALLS
+        //************************************************************
 
         //BUILD options list / each option is an object in the optionsList Array
-
         buildOptionQtySizeNameData( $buildFormOptions );
 
         encodeOptionTextForApi();
         // call API to build Nutrition Info for optionsList
         ajaxApiBuildData();
-        console.log( foodDataArray );
-
-
 
     } ); // end of document ready
 } )( jQuery ); // end of jQuery name space
