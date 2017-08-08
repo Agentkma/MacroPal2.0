@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>MacroPal</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/normalize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/application.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+
+    <div class="navbar-fixed">
+        <nav class="grey darken-3" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">MacroPal</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#calculate">CALCULATE</a></li>
+                    <li><a href="#build">BUILD</a></li>
+                    <li><a href="#search">SEARCH</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="#calculate">CALCULATE</a></li>
+                    <li><a href="#build">BUILD</a></li>
+                    <li><a href="#search">SEARCH</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+
+    <header id="header">
+        <div class="container">
+            <section class="row">
+                <div class="col s12 l6 offset-l6 pull-l6">
+                    <div class="section no-pad-bot tagLine" id="index-banner">
+                        <br><br>
+                        <h1 class="header center orange-text">MacroPal</h1>
+                        <div class="row center">
+                            <h5 class="header col s12 light">Easily find your daily nutrition requirements, build shopping lists, and search food nutrition info.</h5>
+                        </div>
+                        <div class="row center">
+                            <a href="#calculate" id="download-button" class="btn-large waves-effect   darken-4 orange">Get Started</a>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </header>
+    <main role="main" class="main">
+        <div class="container">
+            <section class="section_Calc">
+                <div class="section">
+                    <article class="">
+
+                        <!--  Calories/Macros Results-->
+                        <div class="row section_calc-submit">
+                            <div class=" col s12  ">
+
+                                <h2 class="center-align ">Calories & Macros</h2>
+                                <div class="card-panel orange ">
+                                    <span class="white-text "><h5>Your personalized daily nutrition needs are:</h5>
+                                <p>Total Calories: <span id="calories" class="article_submit-result calories "></span></p><br>
+                                    <p>Total Protein: <span id="protein" class="article_submit-result protein"></span> grams</p><br>
+                                    <p>Total Carbs: <span id="carb" class="article_submit-result carb "></span> grams</p><br>
+                                    <p>Total Fat: <span id="fat" class="article_submit-result fat "></span> grams</p><br>
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row center-align">
+                                <button id="calcResultReset" class="btn waves-effect orange  darken-4" type="submit" name="action">Reset
+                    <i class="material-icons right">send</i>
+                </button>
+
+                            </div>
+
+                            <!-- End CAL/MACRO RESULTS Section-->
+                            <h2 class="center grey darken-3  hide-on-large-only "><i class="material-icons ">flash_on</i></h2>
+                        </div>
+
+                        <!-- Calculate Form Section -->
+                        <div id="calculate" class="row calcForm">
+                            <form class="col s12">
+                                <legend>
+                                    <h2>Calculate</h2></legend>
+                                <div class="row">
+                                    <div class="input-field col s12 m6">
+                                        <select class="form_select-sex  ">
+                                          <option value="" disabled selected >Choose your option</option>
+                                          <option value="male" class="orange-text" >Male</option>
+                                          <option value="female">Female</option>
+                                      </select>
+                                        <label>Sex</label>
+                                    </div>
+                                    <!-- </div>
+
+                                <div class="row"> -->
+                                    <div class="input-field col s12 m6">
+                                        <input id="age" type="text" class="validate form_input-age">
+                                        <label for="age">Age</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m6">
+                                        <select class="form_select-height">
+                              <option disabled selected value="" >Choose your option</option>
+                              <option value="149.86">4'11"</option>
+                              <option value="152.4">5'0"</option>
+                              <option value="154.94">5'1"</option>
+                              <option value="157.48">5'2"</option>
+                              <option value="160.02">5'3"</option>
+                              <option value="162.56">5'4"</option>
+                              <option value="165.1">5'5"</option>
+                              <option value="167.64">5'6"</option>
+                              <option value="170.18">5'7"</option>
+                              <option value="172.72">5'8"</option>
+                              <option value="175.26">5'9"</option>
+                              <option value="177.8">5'10"</option>
+                              <option value="180.34">5'11"</option>
+                              <option value="182.88">6'0"</option>
+                              <option value="185.42">6'1"</option>
+                              <option value="187.96">6'2"</option>
+                              <option value="190.5">6'3"</option>
+                              <option value="193.04">6'4"</option>
+                              <option value="195.58">6'5"</option>
+                              <option value="198.12">6'6"</option>
+                              <option value="200.66">6'7"</option>
+                            </select>
+                                        <label>Height</label>
+                                    </div>
+                                    <!-- </div>
+
+                                <div class="row"> -->
+                                    <div class="input-field col s12 m6">
+                                        <input id="weight" type="text" class="validate form_input-weight">
+                                        <label for="age">Weight/lbs</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12 m6">
+                                        <select class="form_select-activity">
+                              <option value="" disabled selected >Choose your option</option>
+                              <option value="1">Sedentary</option>
+                              <option value="2">Lightly Active</option>
+                              <option value="3">Moderately Active</option>
+                              <option value="4">Very Active</option>
+                            </select>
+                                        <label>Daily Activity Level</label>
+                                    </div>
+                                    <!-- </div>
+
+                                <div class="row"> -->
+                                    <div class="input-field col s12 m6">
+                                        <select class="form_select-goal">
+                              <option value="" disabled selected  >Choose your option</option>
+                              <option value="1">Lose Weight</option>
+                              <option value="2">Maintain Weight</option>
+                              <option value="3">Gain Weight</option>
+                            </select>
+                                        <label>Goals</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <select class="form_select-diet">
+                              <option value="" disabled selected  >Choose your option</option>
+                              <option value="1">Low Carb</option>
+                              <option value="2">Standard Balance</option>
+                              <option value="3">Low Fat</option>
+                            </select>
+                                        <label>Diet Type</label>
+                                    </div>
+                                </div>
+
+                                <div class="row center-align">
+                                    <button class="btn waves-effect orange  darken-4" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End Calc Section -->
+                    </article>
+                </div>
+            </section>
+
+            <section id="build">
+                <h2 class="center  darken-3 grey-text "><i class="material-icons ">flash_on</i></h2>
+                <!-- Build Form Section -->
+                <div class="row section_BuildList">
+                    <form class="col s12 buildForm">
+                        <legend>
+                            <h2>Build</h2></legend>
+
+                        <fieldset class="foodOptionList" value="fieldset ">
+                            <div class="input-field col s12 l4 foodChosen">
+
+                                <select multiple class=" proteinChosen form_build-select ">
+                                    <option value=" " disabled >Choose your option</option>
+                                    <option value="1 " class="protein">Chicken Breast</option>
+                                    <option value="2 " class="protein">Chicken Thighs</option>
+                                    <!-- <option value="3 " class="protein">Ground Chicken</option>
+                                    <option value="4 " class="protein">Turkey Breast</option>
+                                    <option value="5 " class="protein">Ground Turkey 90/10</option>
+                                    <option value="6 " class="protein">Beef Filet</option>
+                                    <option value="7 " class="protein">Beef Flank</option>
+                                    <option value="8 " class="protein">Beef Ribeye</option>
+                                    <option value="9 " class="protein">Beef Ground</option>
+                                    <option value="10 " class="protein">Fish Salmon Steak</option>
+                                    <option value="11 " class="protein">Fish Tuna Steak</option>
+                                    <option value="12 " class="protein">Fish Tilapia</option> -->
+                                </select>
+                                <label>Protein</label>
+
+                                <ul id="proteinChosen" class="collection with-header foodChosenList proteinList">
+                                    <h4 class="collection-header ">Protein List</h4>
+
+                                </ul>
+
+                                <!-- </fieldset> -->
+                            </div>
+
+                            <div class="input-field col s12 l4 foodChosen">
+                                <!-- <fieldset> -->
+
+                                <select multiple class=" carbChosen form_build-select ">
+                                <optgroup label="vegetables ">
+                            <option value=" " disabled >Choose your option</option>
+                            <option value="1 " class="carb">Broccoli</option>
+                            <option value="2 " class="carb">Green Beans</option>
+                            <!-- <option value="3 " class="carb">Spinach</option>
+                            <option value="4 " class="carb">Bell Peppers</option>
+                            <option value="5 " class="carb">Carrots</option> -->
+                        </optgroup>
+                        <optgroup label="starches ">
+                            <option value="6 " class="carb" >Brown Rice</option>
+                            <!-- <option value="7 " class="carb">White Rice</option>
+                            <option value="8 " class="carb">White Potato</option>
+                            <option value="9 " class="carb">Sweet Potato</option>
+                            <option value="10 " class="carb">Pasta</option>
+                            <option value="11 " class="carb">Wheat Bread</option>
+                            <option value="12 " class="carb">Corn</option>
+                            <option value="13 " class="carb">Black Beans</option> -->
+                        </optgroup>
+                        </select>
+                                <label>Carb</label>
+
+                                <ul id="carbChosen" class="collection with-header carbList foodChosenList ">
+                                    <h4 class="collection-header ">Carb List</h4>
+
+
+
+                                </ul>
+                                <!-- </fieldset> -->
+                            </div>
+
+                            <div class="input-field col s12 l4 foodChosen">
+                                <!-- <fieldset> -->
+                                <select multiple class="form_build-select fatChosen ">
+                                        <optgroup label="plant based ">
+                                    <option value=" " disabled >Choose your option</option>
+                                    <option value="1 " class="fat">Green Olives</option>
+                                    <!-- <option value="2 " class="fat">Calamatta Olives</option>
+                                    <option value="3 " class="fat">Olive Oil</option>
+                                    <option value="4 " class="fat">Pistachios</option>
+                                    <option value="5 " class="fat">Almonds</option> -->
+                                </optgroup>
+                                <optgroup label="animal based ">
+                                    <option value="6 " class="fat">American Cheese</option>
+                                    <!-- <option value="7 " class="fat">Mozzarella Cheese</option>
+                                    <option value="8 " class="fat">Heavy Cream</option>
+                                    <option value="9 " class="fat">Whole Milk</option>
+                                    <option value="10 " class="fat">Skim Milk</option>
+                                    <option value="11 " class="fat">Greek Yogurt</option>
+                                    <option value="12 " class="fat">Cream Cheese</option>
+                                    <option value="13 " class="fat">Cottage Cheese</option> -->
+                                </optgroup>
+                                </select>
+                                <label>Fat</label>
+
+                                <ul id="fatChosen" class="collection with-header fatList foodChosenList ">
+
+                                    <h4 class="collection-header ">Fat List</h4>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="row center-align ">
+                                <button class="btn waves-effect orange darken-4 " type="submit " name="action ">Submit
+                            <i class="material-icons right ">send</i>
+                            </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <!-- End Build Section -->
+            </section>
+
+
+
+            <!-- Grocery List -->
+            <div class="row  ">
+                <div class="col s12 m6 section_GroceryList">
+                    <section>
+                        <ul class="collection with-header groceryList">
+                            <li class="collection-header ">
+                                <h2>Grocery List</h2></li>
+                            <li class="collection-item dismissable groceryListItem">
+                                <div><i class="secondary-content material-icons">brightness_1</i></div><br>
+                                <div></div>
+                            </li>
+                            <li class="collection-item dismissable groceryListItem">
+                                <div><i class="secondary-content material-icons">brightness_1</i></div><br>
+                                <div></div>
+                            </li>
+                            <li class="collection-item dismissable groceryListItem">
+                                <div><i class="secondary-content material-icons">brightness_1</i></div><br>
+                                <div></div>
+                            </li>
+                            <li class="collection-item dismissable groceryListItem">
+                                <div><i class="secondary-content material-icons">brightness_1</i></div><br>
+                                <div></div>
+                            </li>
+                            <li class="collection-item dismissable groceryListItem">
+                                <div><i class="secondary-content material-icons">brightness_1</i></div><br>
+                                <div></div>
+                            </li>
+
+                        </ul>
+
+                    </section>
+                </div>
+
+                <!-- <div class="col s12 m6"> -->
+                <h2 class="center grey-text darken-3  hide-on-med-and-up"><i class="material-icons ">flash_on</i></h2>
+
+                <div id="search" class="row section_SearchFoods">
+                    <div class="col s12 m6">
+                        <!-- Search Food Section -->
+                        <section class="section">
+                            <form id="searchFoodsForm" class="col s12 ">
+                                <legend>
+                                    <h2>Search Foods</h2></legend>
+                                <fieldset>
+                                    <div class="row ">
+                                        <div class="input-field col s12 ">
+                                            <input id="foodName" type="text" class="validate ">
+                                            <label for="foodName">Food </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row center-align ">
+                                        <button class="btn waves-effect orange  darken-4 " type="submit " name="action ">Submit
+                            <i class="material-icons right ">send</i>
+                          </button>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                            <!-- </div>  NUTRITION FACTS -->
+
+                            <div class="col s12 ">
+                                <div id="nutritionSearchResult" class="row ">
+
+                                    <h2 class="center grey-text grey darken-3  "><i class="material-icons ">description</i></h2>
+                                    <h5 class="center-align ">Nutrition Facts</h5>
+                                    <div id="foodSearchInfo" class="card-panel grey lighten-2 ">
+                                        <span class="grey-text ">Nutrition Info
+  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- End Search Section-->
+                        </section>
+                    </div>
+                </div>
+
+
+                <!--  -->
+                <section>
+                    <!--   Icon Section   -->
+                    <div class="row ">
+
+                        <div class="col s12  ">
+                            <div class="icon-block ">
+                                <h2 class="center  darken-3 grey-text "><i class="material-icons ">new_releases</i></h2>
+                                <h5 class="center ">Coming Soon</h5>
+
+                                <p class="light ">Build your breakfast, lunch, and dinner meals based on your Grocery List.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <br><br>
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer orange ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col l6 s12 ">
+                    <h5 class="white-text ">About MacroPal</h5>
+                    <p class="grey-text text-lighten-4 ">A solo project by K. Anderson. This prototype application will be pitched and modified per customer request to integrate into coachkandfenway.com.</p>
+
+
+                </div>
+
+                <div class="col l3 s12 ">
+                    <h5 class="white-text ">Connect</h5>
+                    <ul>
+                        <li><a class="white-text " href="mailto:kevin.m.anderson@icloud.com "><i class="material-icons">email</i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright ">
+            <div class="container ">
+                <p>
+                    Made by K. Anderson, All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
+    <script src="js/materialize.js "></script>
+    <script src="js/init.js "></script>
+
+</body>
+
+</html>
