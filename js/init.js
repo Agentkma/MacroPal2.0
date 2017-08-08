@@ -1,12 +1,14 @@
 ( function ( $ ) {
-    $( function () {
+    $( document ).ready( function () {
 
         // 'use strict';
 
         //Mateerialize Utilities    *****************
         //******************************
 
-        $( '.button-collapse' ).sideNav();
+        $( '.button-collapse' ).sideNav( {
+            closeOnClick: true
+        } );
         $( 'select' ).material_select();
 
 
@@ -35,7 +37,7 @@
 
 
         // create array to hold the Grocery List food obj/ifo for each the protein, carb, fats
-        let foodChoices = [];
+        let foodChoices;
         let foodNutritionData = {};
 
 
@@ -261,25 +263,31 @@
         ///funct: calc the amount in lbs of all food chosen for week
         function calcFoodAmountNeeded( choicesArray, foodEachChoice, foodType ) {
             //access the array of li for each P,C,F
-            let foodChoiceData = {};
+
             for ( let food = 0; food < choicesArray.length; food++ ) {
+
+                var foodChoiceData = {};
                 //access the foodDataArray of food object data
-
-                foodDataArray.forEach( ( foodObject ) => {
+                for ( let choice = 0; choice < foodDataArray.length; choice++ ) {
+                    // foodDataArray.forEach( ( foodObject ) => {
                     let $food = $( choicesArray[ food ] ).data( 'food' );
-
+                    // console.log($food);
                     //match food object names to li text content
-                    if ( foodObject.name === $food ) {
+                    if ( foodDataArray[ choice ].name === $food ) {
 
                         //calc how much of each to buy
-                        foodChoiceData.weight = ((( foodEachChoice / foodObject[ foodType ] ) * foodObject.weight)/448).toFixed(1);
+                        foodChoiceData.weight = ( ( ( foodEachChoice / foodDataArray[ choice ][ foodType ] ) * foodDataArray[ choice ].weight ) / 448 ).toFixed( 1 );
                         //add name
-                        foodChoiceData.name = foodObject.name;
+                        foodChoiceData.name = foodDataArray[ choice ].name;
+
                         //add food Choice to array
                         foodChoices.push( foodChoiceData );
+
                     }
-                } );
+
+                }
             }
+
 
         }
 
@@ -315,16 +323,17 @@
             calcFoodAmountNeeded( $choiceOfProtein, proteinEachChoice, "protein" );
 
             ///remove existing grocery li
-            $('.groceryListItem').remove();
+            $( '.groceryListItem' ).remove();
 
-            let groceryListItem ;
+            var groceryListItem;
             ///loop through foodChoices array...
+
             foodChoices.forEach( ( foodObject ) => {
 
-                groceryListItem += `<li class="collection-item dismissable groceryListItem"><div>${foodObject.name}<i class="secondary-content material-icons">brightness_1</i></div><br><div>${foodObject.weight} LBS</div></li>`;
-
+                groceryListItem = `<li class="collection-item dismissable groceryListItem"><div>${foodObject.name}<i class="secondary-content material-icons">brightness_1</i></div><br><div>${foodObject.weight} LBS</div></li>`;
+                $groceryList.append( groceryListItem );
             } );
-            $groceryList.append( groceryListItem );
+
             //access each food object
             // add each food to grocery list ul section as li
         }
@@ -365,9 +374,6 @@
                         if ( foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.PROCNT.quantity ) {
                             protein = foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.PROCNT.quantity;
                         }
-
-                        // console.log(protein);
-                        // console.log(foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.PROCNT.quantity);
 
 
                         var foodNutrition = new FoodData( name, calories, weight, fat, protein, carb );
@@ -415,8 +421,7 @@
 
             calcMacrosByDiet();
             showCalcResults();
-            //hides calc div
-            $calcForm.hide();
+
             //shows results div
             $caloriesMacroResult.fadeIn( 1500 );
             $( 'html, body' ).animate( {
@@ -430,8 +435,7 @@
         $calcResultResetBtn.click( ( event ) => {
             //hides results div
             $caloriesMacroResult.hide();
-            //shows calc div
-            $calcForm.fadeIn( 1500 );
+
         } );
 
 

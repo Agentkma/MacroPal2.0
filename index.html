@@ -17,22 +17,24 @@
 
     <div class="navbar-fixed">
         <nav class="grey darken-3" role="navigation">
-            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">MacroPal</a>
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo">MacroPal</a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#calculate">CALCULATE</a></li>
                     <li><a href="#build">BUILD</a></li>
                     <li><a href="#search">SEARCH</a></li>
                 </ul>
-
-                <ul id="nav-mobile" class="side-nav">
-                    <li><a href="#calculate">CALCULATE</a></li>
-                    <li><a href="#build">BUILD</a></li>
-                    <li><a href="#search">SEARCH</a></li>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
+
         </nav>
     </div>
+
+    <ul id="nav-mobile" class="side-nav">
+        <li><a href="#calculate">CALCULATE</a></li>
+        <li><a href="#build">BUILD</a></li>
+        <li><a href="#search">SEARCH</a></li>
+    </ul>
 
     <header id="header">
         <div class="container">
@@ -64,7 +66,7 @@
                             <div class=" col s12  ">
 
                                 <h2 class="center-align ">Calories & Macros</h2>
-                                <div class="card-panel orange ">
+                                <div class="card-panel orange calcSection_CalDiv">
                                     <span class="white-text "><h5>Your personalized daily nutrition needs are:</h5>
                                 <p>Total Calories: <span id="calories" class="article_submit-result calories "></span></p><br>
                                     <p>Total Protein: <span id="protein" class="article_submit-result protein"></span> grams</p><br>
@@ -256,8 +258,6 @@
                                 <ul id="carbChosen" class="collection with-header carbList foodChosenList ">
                                     <h4 class="collection-header ">Carb List</h4>
 
-
-
                                 </ul>
                                 <!-- </fieldset> -->
                             </div>
@@ -289,9 +289,7 @@
                                 <ul id="fatChosen" class="collection with-header fatList foodChosenList ">
 
                                     <h4 class="collection-header ">Fat List</h4>
-
                                 </ul>
-
                             </div>
 
                             <div class="row center-align ">
@@ -315,10 +313,6 @@
                         <ul class="collection with-header groceryList">
                             <li class="collection-header ">
                                 <h2>Grocery List</h2></li>
-                            <li class="collection-item dismissable groceryListItem">
-                                <div><i class="secondary-content material-icons">brightness_1</i></div><br>
-                                <div></div>
-                            </li>
                             <li class="collection-item dismissable groceryListItem">
                                 <div><i class="secondary-content material-icons">brightness_1</i></div><br>
                                 <div></div>

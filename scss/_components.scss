@@ -1,5 +1,20 @@
 
+button {
+    width:50%;
+}
 
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+// .dropdown-content
+.select-dropdown > .active {
+    color: #ff9800;
+}
 
 
 .section_calc-submit {
@@ -7,11 +22,10 @@
     padding-top: 4rem;
 }
 
-#nutritionSearchResult {
-
-    display:none;
-}
-
 .secondary-content {
     color:#ff9800;
+}
+
+#nutritionSearchResult {
+    display:none;
 }
