@@ -20,7 +20,16 @@ fieldset{
 }
 
 
+@media (max-width:600px) {
 
+    #callToAction {
+        // background-color: lightgray;
+        // padding: 2rem;
+        // border-radius: .25rem;
+        color: black !important;
+
+    }
+}
 
 @media (min-width:600px) {
     #header{
