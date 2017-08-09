@@ -70,12 +70,16 @@
                             <div class=" col s12  ">
 
                                 <h2 class="center-align ">Calories & Macros</h2>
-                                <div class="card-panel orange calcSection_CalDiv">
-                                    <h5 class="white-text ">Your personalized daily nutrition needs are:</h5>
-                                    <p>Total Calories: <span id="calories" class="article_submit-result calories "></span></p><br>
-                                    <p>Total Protein: <span id="protein" class="article_submit-result protein"></span> grams</p><br>
-                                    <p>Total Carbs: <span id="carb" class="article_submit-result carb "></span> grams</p><br>
-                                    <p>Total Fat: <span id="fat" class="article_submit-result fat "></span> grams</p><br>
+                                <div class=" row card-panel orange calcSection_CalDiv">
+                                    <h4 class="white-text center-align ">Your personalized daily nutrition needs are:</h4>
+                                    <div class=" col m6 center-align">
+                                        <p>Total Calories: <span id="calories" class="article_submit-result calories "></span></p><br>
+                                        <p>Total Protein: <span id="protein" class="article_submit-result protein"></span> grams</p><br>
+                                    </div>
+                                    <div class=" col m6 center-align">
+                                        <p>Total Carbs: <span id="carb" class="article_submit-result carb "></span> grams</p><br>
+                                        <p>Total Fat: <span id="fat" class="article_submit-result fat "></span> grams</p><br>
+                                    </div>
 
                                 </div>
                             </div>
@@ -215,7 +219,7 @@
                                     <option value="1 " class="protein">Chicken Breast</option>
                                     <option value="2 " class="protein">Chicken Thighs</option>
                                     <option value="3 " class="protein">Ground Chicken</option>
-                                    <option value="4 " class="protein">Turkey Breast</option>
+                                    <!-- <option value="4 " class="protein">Turkey Breast</option>
                                     <option value="5 " class="protein">Ground Turkey 90/10</option>
                                     <option value="6 " class="protein">Beef Filet</option>
                                     <option value="7 " class="protein">Beef Flank</option>
@@ -223,7 +227,7 @@
                                     <option value="9 " class="protein">Beef Ground</option>
                                     <option value="10 " class="protein">Fish Salmon Steak</option>
                                     <option value="11 " class="protein">Fish Tuna Steak</option>
-                                    <option value="12 " class="protein">Fish Tilapia</option>
+                                    <option value="12 " class="protein">Fish Tilapia</option> -->
                                 </select>
                                 <label>Protein</label>
 
@@ -244,19 +248,19 @@
                             <option value=" " disabled >Choose your option</option>
                             <option value="1 " class="carb">Broccoli</option>
                             <option value="2 " class="carb">Green Beans</option>
-                            <option value="3 " class="carb">Spinach</option>
+                            <!-- <option value="3 " class="carb">Spinach</option>
                             <option value="4 " class="carb">Bell Peppers</option>
-                            <option value="5 " class="carb">Carrots</option>
+                            <option value="5 " class="carb">Carrots</option> -->
                         </optgroup>
                         <optgroup label="starches ">
                             <option value="6 " class="carb" >Brown Rice</option>
                             <option value="7 " class="carb">White Rice</option>
                             <option value="8 " class="carb">White Potato</option>
-                            <option value="9 " class="carb">Sweet Potato</option>
+                            <!-- <option value="9 " class="carb">Sweet Potato</option>
                             <option value="10 " class="carb">Pasta</option>
                             <option value="11 " class="carb">Wheat Bread</option>
                             <option value="12 " class="carb">Corn</option>
-                            <option value="13 " class="carb">Black Beans</option>
+                            <option value="13 " class="carb">Black Beans</option> -->
                         </optgroup>
                         </select>
                                 <label>Carb</label>
@@ -275,7 +279,7 @@
                                         <optgroup label="plant based ">
                                     <option value=" " disabled >Choose your option</option>
                                     <option value="1 " class="fat">Green Olives</option>
-                                    <option value="2 " class="fat">Calamatta Olives</option>
+                                    <!-- <option value="2 " class="fat">Calamatta Olives</option>
                                     <option value="3 " class="fat">Olive Oil</option>
                                     <option value="4 " class="fat">Pistachios</option>
                                     <option value="5 " class="fat">Almonds</option>
@@ -288,7 +292,7 @@
                                     <option value="10 " class="fat">Skim Milk</option>
                                     <option value="11 " class="fat">Greek Yogurt</option>
                                     <option value="12 " class="fat">Cream Cheese</option>
-                                    <option value="13 " class="fat">Cottage Cheese</option>
+                                    <option value="13 " class="fat">Cottage Cheese</option> -->
                                 </optgroup>
                                 </select>
                                 <label>Fat</label>
@@ -367,8 +371,8 @@
 
                                     <div class="row center-align ">
                                         <button class="btn waves-effect orange  darken-4 " name="action ">Submit
-                            <i class="material-icons right ">send</i>
-                          </button>
+                                            <i class="material-icons right ">send</i>
+                                            </button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -380,16 +384,22 @@
                     <div class="row " id="nutritionSearchResult">
                         <div class="col s12 ">
 
+
                             <h2 class="center white-text  darken-3  "><i class="material-icons ">description</i></h2>
                             <h2 class="center-align ">Nutrition Facts</h2>
-                            <div id="foodSearchInfo" class="card-panel orange ">
-                                <!-- <h4 id="nutritionSearchResultSpan" class="grey-text ">Nutrition Info:
-                                </h4> -->
-                                <p>Food: <span id="foodSearch" class="article_submit-result food "></span></p><br>
-                                <p>Calories: <span id="caloriesSearch" class="article_submit-result calories "></span></p><br>
-                                <p>Protein: <span id="proteinSearch" class="article_submit-result protein"></span> grams</p><br>
-                                <p>Carbs: <span id="carbSearch" class="article_submit-result carb "></span> grams</p><br>
-                                <p>Fat: <span id="fatSearch" class="article_submit-result fat "></span> grams</p><br>
+                            <div id="foodSearchInfo" class=" row card-panel orange">
+                                <h2 id="foodSearch" class="center-align white-text">
+                                <!-- <p> <span  class="article_submit-result food "></span></p>  -->
+                                </h2>
+                                <div class="col m6 center-align">
+                                    <p>Calories: <span id="caloriesSearch" class="article_submit-result calories "></span>
+                                    </p><br>
+                                    <p>Protein: <span id="proteinSearch" class="article_submit-result protein"></span> grams</p><br>
+                                </div>
+                                <div class="col m6 center-align">
+                                    <p>Carbs: <span id="carbSearch" class="article_submit-result carb "></span> grams</p><br>
+                                    <p>Fat: <span id="fatSearch" class="article_submit-result fat "></span> grams</p><br>
+                                </div>
 
                             </div>
                         </div>

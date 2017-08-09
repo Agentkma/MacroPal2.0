@@ -484,7 +484,7 @@
             $caloriesMacroResult.fadeIn( 1500 );
             $( 'html, body' ).animate( {
                 scrollTop: $caloriesMacroResult.offset().top
-            }, 0 );
+            }, 2000 );
 
         } );
 
@@ -532,6 +532,10 @@
 
             //shows results div
             $searchFoodResultsDiv.show();
+
+            $('html, body').animate({
+        scrollTop: $("#nutritionSearchResult").offset().top
+    }, 2000);
         } );
 
 
