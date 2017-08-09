@@ -81,6 +81,8 @@
         //JQUERY - VARIABLES    *****************
         //******************************
 
+        $btnGetStarted = $("#download-button");
+
         /// Get Calculate Input Values
         $calcForm = $( '.calcForm' );
         $calcFormSex = $( '.form_select-sex option' );
@@ -446,6 +448,15 @@
 
         //EVENT LISTENERS    ***************************EVENT LISTENERS
         //************************************************************
+
+
+        $btnGetStarted .click(()=>{
+
+            $( 'html, body' ).animate ({
+                scrollTop: $calcForm.offset().top
+            }, 2000 );
+        });
+
 
         // LISTENER FOR Calc Form submission
         $calcForm.submit( ( event ) => {
