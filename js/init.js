@@ -81,7 +81,7 @@
         //JQUERY - VARIABLES    *****************
         //******************************
 
-        $btnGetStarted = $("#download-button");
+        $btnGetStarted = $( "#download-button" );
 
         /// Get Calculate Input Values
         $calcForm = $( '.calcForm' );
@@ -101,10 +101,22 @@
         $fatResult = $( '#fat' );
         $calcResultResetBtn = $( '#calcResultReset' );
 
+        //Build Card Links
+        $buildCard = $( '#buildCard' );
+        $buildLinkBreakfast = $( '#linkBuildBreakfast' );
+        $buildLinkLunch = $( '#linkBuildLunch' );
+        $buildLinkDinner = $( '#linkBuildDinner' );
+
+        //Build sections
+        $buildBreakfast = $( '#chooseBreakfast' );
+        $buildLunch = $( '#chooseLunch' );
+        $buildDinner = $( '#chooseDinner' );
+
         //Build Select options for API
         $buildFormOptions = $( '.form_build-select option' );
-        $buildForm = $( '.form_build-select' );
+        $buildForm = $( '.section_BuildList' );
         $buildFormSubmit = $( '.buildForm' );
+        $buildBtnBack = $( '.btnBackBuild' );
 
         let $selectedFood = $( '.form_build-select>option:selected' );
         $groceryList = $( '.groceryList' );
@@ -271,7 +283,7 @@
         function calcFoodAmountNeeded( choicesArray, foodEachChoice, foodType ) {
             //access the array of li for each P,C,F
 
-            for ( let food = 0; food < choicesArray.length-1; food++ ) {
+            for ( let food = 0; food < choicesArray.length - 1; food++ ) {
 
                 var foodChoiceData = {};
                 //access the foodDataArray of food object data
@@ -450,12 +462,12 @@
         //************************************************************
 
 
-        $btnGetStarted .click(()=>{
+        $btnGetStarted.click( () => {
 
-            $( 'html, body' ).animate ({
+            $( 'html, body' ).animate( {
                 scrollTop: $calcForm.offset().top
             }, 2000 );
-        });
+        } );
 
 
         // LISTENER FOR Calc Form submission
@@ -505,6 +517,56 @@
             $caloriesMacroResult.hide();
         } );
 
+
+        // LISTENER for when links on BUILD card for breakfast, lunch, dinner clicked
+        $buildLinkBreakfast.click( () => {
+            $buildCard.hide();
+            $buildForm.fadeIn( 1000 );
+            $buildBreakfast.fadeIn( 2000 );
+            $( 'html, body' ).animate( {
+                scrollTop: $buildForm.offset().top
+            }, 2000 );
+
+        } );
+
+        // LISTENER for when links on BUILD card for breakfast, lunch, dinner clicked
+        $buildLinkLunch.click( () => {
+            $buildCard.hide();
+            $buildForm.fadeIn( 1000 );
+            $buildLunch.fadeIn( 2000 );
+            $( 'html, body' ).animate( {
+                scrollTop: $buildForm.offset().top
+            }, 2000 );
+
+        } );
+
+        // LISTENER for when links on BUILD card for breakfast, lunch, dinner clicked
+        $buildLinkDinner.click( () => {
+            $buildCard.hide();
+            $buildForm.fadeIn( 1000 );
+            $buildDinner.fadeIn( 2000 );
+            $( 'html, body' ).animate( {
+                scrollTop: $buildForm.offset().top
+            }, 2000 );
+
+        } );
+
+        //LISTENER for when BACK button clicked on build forms
+        $buildBtnBack.click( () => {
+            $buildCard.fadeIn( 1000 );
+
+
+            $( 'html, body' ).animate( {
+                scrollTop: $buildCard.offset().top
+            }, 2000 );
+
+            $buildForm.hide();
+            $buildBreakfast.hide();
+            $buildLunch.hide();
+            $buildDinner.hide();
+        } );
+
+
         // LISTENER FOR when food is selected- add to BUILD LIST
         $( document ).on( 'change', '.form_build-select', function ( event ) {
             event.stopPropagation();
@@ -544,9 +606,9 @@
             //shows results div
             $searchFoodResultsDiv.show();
 
-            $('html, body').animate({
-        scrollTop: $("#nutritionSearchResult").offset().top
-    }, 2000);
+            $( 'html, body' ).animate( {
+                scrollTop: $( "#nutritionSearchResult" ).offset().top
+            }, 2000 );
         } );
 
 

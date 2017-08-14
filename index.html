@@ -110,7 +110,6 @@
                                             <label>Sex</label>
                                         </div>
                                         <!-- </div>
-
                                 <div class="row"> -->
                                         <div class="input-field col s12 m6">
                                             <input id="age" type="text" class="validate form_input-age">
@@ -146,7 +145,6 @@
                                             <label>Height</label>
                                         </div>
                                         <!-- </div>
-
                                 <div class="row"> -->
                                         <div class="input-field col s12 m6">
                                             <input id="weight" type="text" class="validate form_input-weight">
@@ -166,7 +164,6 @@
                                             <label>Daily Activity Level</label>
                                         </div>
                                         <!-- </div>
-
                                 <div class="row"> -->
                                         <div class="input-field col s12 m6">
                                             <select class="form_select-goal">
@@ -203,23 +200,69 @@
                 </div>
             </section>
 
-            <section id="build">
+            <section id="build" class="col s12 m6">
                 <h2 class="center  darken-3 grey-text "><i class="material-icons ">flash_on</i></h2>
+
+
+                <div class="card sticky-action " id="buildCard">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="img/headerbg.jpg" height="200rem">
+                    </div>
+                    <div class="card-content buildCardLinks">
+                        <span class="card-title activator grey-text text-darken-4"><h2>Build<i class="material-icons right">more_vert</i></h2></span>
+
+                        <div class="card-action" id="breakfast">
+                            <a href="#breakfastList" id="linkBuildBreakfast">Breakfast</a>
+                        </div>
+                        <div class="card-action" id="lunch">
+                            <a href="#lunchList" id="linkBuildLunch">Lunch</a>
+                        </div>
+                        <div class="card-action" id="dinner">
+                            <a href="#dinnerList" id="linkBuildDinner">Dinner</a>
+                        </div>
+                        <div class="row center-align ">
+                            <button class="btn waves-effect orange darken-4 " name="action ">Submit
+                        <i class="material-icons right ">send</i>
+                        </button>
+                        </div>
+
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Build<i class="material-icons right">close</i></span><br><br><br>
+                        <h5> Build your weekly grocery list by choosing your protein, fat, and carbs for breakfast, lunch, and dinner.</h5>
+                    </div>
+
+
+                </div>
                 <!-- Build Form Section -->
                 <div class="row section_BuildList">
 
-                    <form class="col s12 buildForm">
+                    <form class="col s12 buildForm ">
                         <fieldset class="foodOptionList">
                             <legend>
-                                <h2>Build</h2></legend>
-                            <div class="input-field col s12 l4 foodChosen">
+                                <h2>Choose Your Foods</h2></legend>
+                            <div id="chooseBreakfast" class="input-field col s12 l4 foodChosen breakfast">
 
                                 <select multiple class=" proteinChosen form_build-select ">
-                                    <option value=" " disabled >Choose your option</option>
-                                    <option value="1 " class="protein">Chicken Breast</option>
-                                    <option value="2 " class="protein">Chicken Thighs</option>
-                                    <option value="3 " class="protein">Ground Chicken</option>
-                                    <option value="4 " class="protein">Turkey Breast</option>
+                                    <optgroup label="protein">
+                                        <option value=" " disabled >Choose your option</option>
+                                        <option value="1 " class="protein">Bacon</option>
+                                        <option value="2 " class="protein">Egg</option>
+                                        <option value="3 " class="protein">Pork Sausage</option>
+                                        <option value="4 " class="protein">Turkey Sausage</option>
+                                </optgroup>
+                                <optgroup label="carb">
+                                    <option value="1 " class="carb">White Potato</option>
+                                    <option value="2 " class="carb">Oatmeal</option>
+                                    <option value="3 " class="carb">Spinach</option>
+                                    <option value="4 " class="carb">Blueberry</option>
+                            </optgroup>
+                            <optgroup label="fat">
+                                <option value="5 " class="fat">Butter</option>
+                                <option value="6 " class="fat">Olive Oil</option>
+                                <option value="7 " class="fat">Cheddar Cheese</option>
+                                <option value="8 " class="fat">American Cheese</option>
+                            </optgroup>
                                     <!-- <option value="5 " class="protein">Ground Turkey 90/10</option>
                                     <option value="6 " class="protein">Beef Filet</option>
                                     <option value="7 " class="protein">Beef Flank</option>
@@ -229,30 +272,32 @@
                                     <option value="11 " class="protein">Fish Tuna Steak</option>
                                     <option value="12 " class="protein">Fish Tilapia</option> -->
                                 </select>
-                                <label>Protein</label>
+                                <label>Breakfast</label>
 
-                                <ul id="proteinChosen" class="collection with-header foodChosenList proteinList">
+                                <ul id="breakfastList" class="collection with-header foodChosenList proteinList">
                                     <li>
-                                        <h4 class="collection-header ">Protein List</h4></li>
+                                        <h4 class="collection-header ">Breakfast List</h4></li>
 
                                 </ul>
 
-                                <!-- </fieldset> -->
+                                <a class="waves-effect orange darken-4 btn btnBackBuild"><i class="material-icons left ">cloud</i>BACK</a>
+
+
                             </div>
 
-                            <div class="input-field col s12 l4 foodChosen">
+                            <div id="chooseLunch" class="input-field col s12 l4 foodChosen lunch">
                                 <!-- <fieldset> -->
 
                                 <select multiple class=" carbChosen form_build-select ">
-                                <optgroup label="vegetables ">
-                            <option value=" " disabled >Choose your option</option>
-                            <option value="1 " class="carb">Broccoli</option>
-                            <option value="2 " class="carb">Green Beans</option>
-                            <!-- <option value="3 " class="carb">Spinach</option>
-                            <option value="4 " class="carb">Bell Peppers</option>
-                            <option value="5 " class="carb">Carrots</option> -->
-                        </optgroup>
-                        <optgroup label="starches ">
+                                <optgroup label="protein ">
+                                    <option value=" " disabled >Choose your option</option>
+                                    <option value="1 " class="protein">Chicken Breast</option>
+                                    <option value="2 " class="protein">Turkey Tenderloin</option>
+                                    <!-- <option value="3 " class="protein">Ground Beef</option>
+                                    <option value="4 " class="protein">Salmon</option>
+                                    <option value="5 " class="protein">Pork Tenderloin</option> -->
+                                </optgroup>
+                        <optgroup label="carb ">
                             <option value="6 " class="carb" >Brown Rice</option>
                             <option value="7 " class="carb">White Rice</option>
                             <option value="8 " class="carb">White Potato</option>
@@ -262,31 +307,42 @@
                             <option value="12 " class="carb">Corn</option>
                             <option value="13 " class="carb">Black Beans</option> -->
                         </optgroup>
+                        <optgroup label="fat ">
+                            <option value="6 " class="fat" >Butter</option>
+                            <option value="7 " class="fat">Olive Oil</option>
+                            <option value="8 " class="fat">Coconut Oil</option>
+                            <!-- <option value="9 " class="carb">Sweet Potato</option>
+                            <option value="10 " class="carb">Pasta</option>
+                            <option value="11 " class="carb">Wheat Bread</option>
+                            <option value="12 " class="carb">Corn</option>
+                            <option value="13 " class="carb">Black Beans</option> -->
+                        </optgroup>
                         </select>
-                                <label>Carb</label>
+                                <label>Lunch</label>
 
-                                <ul id="carbChosen" class="collection with-header carbList foodChosenList ">
+                                <ul id="lunchList" class="collection with-header carbList foodChosenList ">
                                     <li>
-                                        <h4 class="collection-header ">Carb List</h4></li>
+                                        <h4 class="collection-header ">Lunch List</h4></li>
 
                                 </ul>
+                                <a class="waves-effect orange darken-4 btn btnBackBuild"><i class="material-icons left ">cloud</i>BACK</a>
                                 <!-- </fieldset> -->
                             </div>
 
-                            <div class="input-field col s12 l4 foodChosen">
+                            <div id="chooseDinner" class="input-field col s12 l4 foodChosen dinner">
                                 <!-- <fieldset> -->
                                 <select multiple class="form_build-select fatChosen ">
-                                        <optgroup label="plant based ">
+                                        <optgroup label="protein">
                                     <option value=" " disabled >Choose your option</option>
-                                    <option value="1 " class="fat">Green Olives</option>
-                                    <!-- <option value="2 " class="fat">Calamatta Olives</option>
-                                    <option value="3 " class="fat">Olive Oil</option>
-                                    <option value="4 " class="fat">Pistachios</option>
-                                    <option value="5 " class="fat">Almonds</option> -->
+                                    <option value="1 " class="protein">Chicken Tenderloin</option>
+                                    <option value="2 " class="protein">Tuna Steak</option>
+                                    <option value="3 " class="protein">Turkey Breast</option>
+                                    <option value="4 " class="protein">Chicken Thigh</option>
+                                    <option value="5 " class="protein">Beef Filet</option>
                                 </optgroup>
-                                <optgroup label="animal based ">
-                                    <option value="6 " class="fat">American Cheese</option>
-                                    <option value="7 " class="fat">Mozzarella Cheese</option>
+                                <optgroup label="carb">
+                                    <option value="6 " class="carb">Sweet Potato</option>
+                                    <option value="7 " class="carb">Pasta</option>
                                     <!-- <option value="8 " class="fat">Heavy Cream</option>
                                     <option value="9 " class="fat">Whole Milk</option>
                                     <option value="10 " class="fat">Skim Milk</option>
@@ -294,30 +350,34 @@
                                     <option value="12 " class="fat">Cream Cheese</option>
                                     <option value="13 " class="fat">Cottage Cheese</option> -->
                                 </optgroup>
-                                </select>
-                                <label>Fat</label>
+                                <optgroup label="fat">
 
-                                <ul id="fatChosen" class="collection with-header fatList foodChosenList ">
+                                    <option value="8 " class="fat">Heavy Cream</option>
+                                    <option value="9 " class="fat">Whole Milk</option>
+                                    <option value="10 " class="fat">Skim Milk</option>
+                                    <!-- <option value="11 " class="fat">Greek Yogurt</option>
+                                    <option value="12 " class="fat">Cream Cheese</option>
+                                    <option value="13 " class="fat">Cottage Cheese</option> -->
+                                </optgroup>
+                                </select>
+                                <label>Dinner</label>
+
+                                <ul id="dinnerList" class="collection with-header fatList foodChosenList ">
 
                                     <li>
-                                        <h4 class="collection-header ">Fat List</h4></li>
+                                        <h4 class="collection-header ">Dinner List</h4></li>
                                 </ul>
+
+                                <a class="waves-effect orange darken-4 btn btnBackBuild"><i class="material-icons left ">cloud</i>BACK</a>
                             </div>
 
-                            <div class="row center-align ">
-                                <button class="btn waves-effect orange darken-4 " name="action ">Submit
-                            <i class="material-icons right ">send</i>
-                            </button>
-                            </div>
+
                         </fieldset>
                     </form>
                 </div>
 
                 <!-- End Build Section -->
             </section>
-
-
-
 
             <div class="row  ">
 
@@ -417,7 +477,7 @@
                         <div class="col s12  ">
                             <div class="icon-block ">
                                 <h2 class="center  darken-3 grey-text "><i class="material-icons ">new_releases</i></h2>
-                                <h5 class="center ">Coming Soon</h5>
+                                <h5 class="center ">UNDER CONSTRUCTION...</h5>
 
                                 <p class="light ">Build your breakfast, lunch, and dinner meals based on your Grocery List.</p>
                             </div>

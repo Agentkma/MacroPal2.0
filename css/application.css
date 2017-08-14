@@ -21,7 +21,7 @@ fieldset {
     background-image: url("../img/macropal-bg-2.jpg");
     background-size: cover; } }
 button {
-  width: 50%; }
+  width: 45%; }
 
 .icon-block {
   padding: 0 15px; }
@@ -40,6 +40,13 @@ button {
   color: #ff9800; }
 
 #nutritionSearchResult {
+  display: none; }
+
+.section_BuildList,
+.breakfast,
+.lunch,
+.dinner,
+.section_GroceryList {
   display: none; }
 
 /*# sourceMappingURL=application.css.map */
