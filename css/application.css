@@ -23,6 +23,9 @@ fieldset {
 button {
   width: 45%; }
 
+.hidden {
+  display: none; }
+
 .icon-block {
   padding: 0 15px; }
 

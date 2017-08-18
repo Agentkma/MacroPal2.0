@@ -221,9 +221,8 @@
                             <a href="#dinnerList" id="linkBuildDinner">Dinner</a>
                         </div>
                         <div class="row center-align ">
-                            <button class="btn waves-effect orange darken-4 " name="action ">Submit
-                        <i class="material-icons right ">send</i>
-                        </button>
+                            <label for="btnSubmitBuildForm" class="btn waves-effect orange darken-4"><i class="material-icons right ">send</i>Submit</label>
+
                         </div>
 
                     </div>
@@ -231,9 +230,8 @@
                         <span class="card-title grey-text text-darken-4">Build<i class="material-icons right">close</i></span><br><br><br>
                         <h5> Build your weekly grocery list by choosing your protein, fat, and carbs for breakfast, lunch, and dinner.</h5>
                     </div>
-
-
                 </div>
+
                 <!-- Build Form Section -->
                 <div class="row section_BuildList">
 
@@ -241,7 +239,7 @@
                         <fieldset class="foodOptionList">
                             <legend>
                                 <h2>Choose Your Foods</h2></legend>
-                            <div id="chooseBreakfast" class="input-field col s12 l4 foodChosen breakfast">
+                            <div id="chooseBreakfast" class="input-field col s12  foodChosen breakfast">
 
                                 <select multiple class=" proteinChosen form_build-select ">
                                     <optgroup label="protein">
@@ -285,7 +283,7 @@
 
                             </div>
 
-                            <div id="chooseLunch" class="input-field col s12 l4 foodChosen lunch">
+                            <div id="chooseLunch" class="input-field col s12 foodChosen lunch">
                                 <!-- <fieldset> -->
 
                                 <select multiple class=" carbChosen form_build-select ">
@@ -370,12 +368,11 @@
 
                                 <a class="waves-effect orange darken-4 btn btnBackBuild"><i class="material-icons left ">cloud</i>BACK</a>
                             </div>
-
-
+                            <button class="hidden" name="action " id="btnSubmitBuildForm">
+                        </button>
                         </fieldset>
                     </form>
                 </div>
-
                 <!-- End Build Section -->
             </section>
 
@@ -403,9 +400,7 @@
                                 <div><i class="secondary-content material-icons">brightness_1</i></div><br>
                                 <div></div>
                             </li>
-
                         </ul>
-
                     </section>
                 </div>
 
@@ -466,8 +461,6 @@
                     </div>
 
                 </section>
-
-
 
                 <!--  -->
                 <section>
