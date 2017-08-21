@@ -279,7 +279,7 @@
 
         //funct: creates new li with basic content and leaves places to add the nutrition values
         function createFoodLi( foodOption, macro ) {
-            let newFoodLi = `<li class="collection-item dismissable foodListItem " data-macroType="${macro}" data-food="${foodOption}"><div>${foodOption}<i class="secondary-content material-icons">brightness_1</i></div></li>`;
+            let newFoodLi = `<li class="collection-item dismissable foodListItem " data-macrotype="${macro}" data-food="${foodOption}"><div>${foodOption}<i class="secondary-content material-icons">brightness_1</i></div></li>`;
             return newFoodLi;
         }
 
@@ -287,50 +287,54 @@
         // function to loop through the $foodForBreakfast...arrays and group the p,c, f
         // need arrays for each p,c,f and then get length of each to determine the qty of choices by group
         function calcBuildListMacroGroupQtys( breakfast, lunch, dinner ) {
-            let allMeals = [];
-            allMeals = [ breakfast ].concat( lunch, dinner );
+
+             let allMeals = breakfast.concat(lunch, dinner );
 
             proteinChoices = [];
             carbChoices = [];
             fatChoices = [];
 
+                for (let i=0; i<allMeals.length; i ++) {
+                    let foodSelection = allMeals[i];
 
-            allMeals.forEach( ( food ) => {
-                /////BUG  IF STATEMENT CONDITIONS NOT EVALUATING PROPERLY...FOOD IS A LI
 
-                let foodMacroType = $( food ).attr( 'data-macroType' );
-// console.log( foodMacroType );
-                if ( foodMacroType === "protein" ) {
 
-                    proteinChoices.push( food );
-                } else if ( foodMacroType === "carb" ) {
-                    carbChoices.push( food );
-                } else {
-                    fatChoices.push( food );
+                    let $foodMacroType = $(foodSelection).attr('data-macrotype');
+
+                    if ( $foodMacroType == "protein" ) {
+
+                        proteinChoices.push( foodSelection );
+                    } else if ( $foodMacroType == "carb" ) {
+                        carbChoices.push( foodSelection );
+                    } else {
+                        fatChoices.push( foodSelection );
+                    }
+
                 }
-            } );
 
+                // console.log(proteinChoices, carbChoices, fatChoices);
         }
 
         ///funct: calc the amount in lbs of all food chosen for week
         function calcFoodAmountNeeded( choicesArray, foodEachChoice, foodType ) {
             //access the array of li for each P,C,F
 
-            for ( let food = 0; food < choicesArray.length - 1; food++ ) {
+            for ( let i = 0; i < choicesArray.length ;  i ++ ) {
 
                 var foodChoiceData = {};
                 //access the foodDataArray of food object data
-                for ( let choice = 0; choice < foodDataArray.length; choice++ ) {
-                    // foodDataArray.forEach( ( foodObject ) => {
-                    let $food = $( choicesArray[ food ] ).data( 'food' );
-                    // console.log($food);
-                    //match food object names to li text content
-                    if ( foodDataArray[ choice ].name === $food ) {
+                for ( let j = 0; j < foodDataArray.length; j++ ) {
 
+
+                    let $food = $( choicesArray[ i ] ).data( 'food' ) + "%20";
+
+                    //match food object names to li text content
+                    if ( foodDataArray[ j ].name === $food ) {
+                        console.log(foodEachChoice);
                         //calc how much of each to buy
-                        foodChoiceData.weight = ( ( ( foodEachChoice / foodDataArray[ choice ][ foodType ] ) * foodDataArray[ choice ].weight ) / 448 ).toFixed( 1 );
+                        foodChoiceData.weight = ( ( ( foodEachChoice / foodDataArray[ j ][ foodType ] ) * foodDataArray[ j ].weight ) / 448 ).toFixed( 1 );
                         //add name
-                        foodChoiceData.name = foodDataArray[ choice ].name;
+                        foodChoiceData.name = foodDataArray[ j ].name.replace("%20", "");
 
                         //add food Choice to array
                         foodChoices.push( foodChoiceData );
@@ -347,15 +351,15 @@
         //funct: create the Grocery List based on the pro/carb/fat chose and cal/macros per day
         function createGroceryList() {
 
-            // REWORK THIS SECTION BUG now that there are breakfast, lunch, dinner group choices
-            // need to get the p, c, f of each food item.
-            // need to
+            // REWORK THIS SECTION BUG no Grocery LI being added...check foodChoices array from function ABOVE
 
             // choices of food for B, L, D in Build Lists
             /// each is an array of foods from P, C, F categories
-            let $foodForBreakfast = $( '#breakfastList li' );
-            let $foodForLunch = $( '#lunchList li' );
-            let $foodForDinner = $( '#dinnerList li' );
+            let $foodForBreakfast = $( '#breakfastList li' ).toArray();
+            let $foodForLunch = $( '#lunchList li' ).toArray();
+            let $foodForDinner = $( '#dinnerList li' ).toArray();
+
+
 
             // console.log($foodForBreakfast,$foodForLunch, $foodForDinner);
 
@@ -373,8 +377,10 @@
             let carbEachChoice = carbForWeek / ( carbChoices.length );
             let fatEachChoice = fatForWeek / ( fatChoices.length );
 
+
             // match the P/C/F list items to the  food objects in foodDataArray.name
             /// carbs
+
             calcFoodAmountNeeded( carbChoices, carbEachChoice, "carb" );
 
             //  fat
@@ -388,10 +394,11 @@
 
             var groceryListItem;
             ///loop through foodChoices array...
+            console.log(foodChoices);
 
             foodChoices.forEach( ( foodObject ) => {
 
-                groceryListItem = `<li class="collection-item dismissable groceryListItem"><div>${foodObject.name}<i class="secondary-content material-icons">brightness_1</i></div><br><div>${foodObject.weight} LBS</div></li>`;
+                groceryListItem = `<li class="collection-item dismissable groceryListItem">${foodObject.name}<i class="secondary-content material-icons">brightness_1</i>   ${foodObject.weight} LBS</li>`;
                 $groceryList.append( groceryListItem );
             } );
 
@@ -627,10 +634,9 @@
 
                  $selectedFoodText = $( value ).text();
 
-///  BUG    THE $selectedFoodMacro variable is storing ALl previously selected li attributes...don't know why since the $selectedFoodText is only storing the currently selected li text()  via the abouve $selectedFood =  $(this).find('option:selected');
 
                  $selectedFoodMacro = $( value ).attr( 'class' );
-                console.log($selectedFoodMacro);
+
 
                 // //call function to create li
                 let newFood = createFoodLi( $selectedFoodText, $selectedFoodMacro );
