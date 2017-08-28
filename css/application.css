@@ -20,6 +20,9 @@ fieldset {
   #header {
     background-image: url("../img/macropal-bg-2.jpg");
     background-size: cover; } }
+@media (min-width: 600px) and (min-width: 1025px) {
+  #header {
+    height: 100vh; } }
 button {
   width: 45%; }
 
@@ -49,7 +52,9 @@ button {
 .breakfast,
 .lunch,
 .dinner,
-.section_GroceryList {
+.snack,
+.section_GroceryList,
+#build {
   display: none; }
 
 /*# sourceMappingURL=application.css.map */

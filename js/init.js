@@ -3,7 +3,7 @@
 
         // 'use strict';
 
-        //Mateerialize Utilities    *****************
+        //Materialize Utilities    *****************
         //******************************
 
         $( '.button-collapse' ).sideNav( {
@@ -20,13 +20,10 @@
         let calories;
         let macroGrams = {};
         let optionsList = [];
+
         let urlEncodedOptionsArray = [];
         let foodDataArray = [];
 
-        //calc total grams needed per week o f each p, c, f
-        let proteinForWeek;
-        let carbForWeek;
-        let fatForWeek;
 
         // food from b,l, d build lists..grouped into macro type arrays
         let proteinChoices;
@@ -40,29 +37,29 @@
         let foodNutrition;
 
 
-        const macrosCalPerGram = {
-            protein: 4,
-            carb: 4,
-            fat: 9
-        };
-
-        const dietLowCarb = {
-            protein: 0.30,
-            carb: 0.10,
-            fat: 0.60
-        };
-
-        const dietLowFat = {
-            protein: 0.50,
-            carb: 0.40,
-            fat: 0.10
-        };
-
-        const dietNormal = {
-            protein: 0.40,
-            carb: 0.40,
-            fat: 0.20
-        };
+        // const macrosCalPerGram = {
+        //     protein: 4,
+        //     carb: 4,
+        //     fat: 9
+        // };
+        //
+        // const dietLowCarb = {
+        //     protein: 0.30,
+        //     carb: 0.10,
+        //     fat: 0.60
+        // };
+        //
+        // const dietLowFat = {
+        //     protein: 0.50,
+        //     carb: 0.40,
+        //     fat: 0.10
+        // };
+        //
+        // const dietNormal = {
+        //     protein: 0.40,
+        //     carb: 0.40,
+        //     fat: 0.20
+        // };
 
         let nutritionAPI = "https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/nutrition-data?app_id=bb5716a9&app_key=4934103f145a552494351407efdecfcf&ingr=1%20medium%20";
 
@@ -87,40 +84,35 @@
 
         $btnGetStarted = $( "#download-button" );
 
-        /// Get Calculate Input Values
+        /// Get Calorie & macro Rx Input Values
         $calcForm = $( '.calcForm' );
-        $calcFormSex = $( '.form_select-sex option' );
-        $calcFormAge = $( '.form_input-age' );
-        $calcFormHeight = $( '.form_select-height option' );
-        $calcFormWeight = $( '.form_input-weight' );
-        $calcFormActivity = $( '.form_select-activity option' );
-        $calcFormGoal = $( '.form_select-goal option' );
-        $calcFormDiet = $( '.form_select-diet option' );
-        $caloriesMacroResult = $( '.section_calc-submit' );
+        $RxcaloriesPerDay = $( '#caloriesRx' );
+        $RxproteinPerDay= $( '#proteinRx' );
+        $RxcarbPerDay = $( '#carbRx');
+        $RxfatPerDay= $( '#fatRx' );
 
-        // Calc Results Values
-        $caloriesResult = $( '#calories' );
-        $proteinResult = $( '#protein' );
-        $carbResult = $( '#carb' );
-        $fatResult = $( '#fat' );
-        $calcResultResetBtn = $( '#calcResultReset' );
 
         //Build Card Links
         $buildCard = $( '#buildCard' );
         $buildLinkBreakfast = $( '#linkBuildBreakfast' );
         $buildLinkLunch = $( '#linkBuildLunch' );
         $buildLinkDinner = $( '#linkBuildDinner' );
+        $buildLinkSnack = $('#linkBuildSnack');
+        $buildBackBtn = $('#buildBackBtn');
 
         //Build sections
+        $buildSection = $('#build');
         $buildBreakfast = $( '#chooseBreakfast' );
         $buildLunch = $( '#chooseLunch' );
         $buildDinner = $( '#chooseDinner' );
+        $buildSnack = $('#chooseSnack');
 
         //Build Select options for API
         $buildFormOptions = $( '.form_build-select option' );
         $buildForm = $( '.section_BuildList' );
         $buildFormSubmit = $( '.buildForm' );
         $buildBtnBack = $( '.btnBackBuild' );
+        $buildSectionBackBtn = $('#buildSectionBackBtn');
 
         let $selectedFood = $( '.form_build-select>option:selected' );
         let $groceryListSection = $( '.section_GroceryList' );
@@ -140,97 +132,6 @@
 
         //FUNCTIONS****************************************** FUNCTIONS
         //************************************************************
-
-        //funct calculates calories
-        function calorieCalc( sex, age, weight, height, activity, goal ) {
-            calories = ( 10 * weight ) + ( 6.25 * height ) - ( 5 * age );
-
-            switch ( sex ) {
-                case 'Male':
-                    calories += 5;
-                    break;
-                case 'Female':
-                    calories -= 161;
-                    break;
-                default:
-                    calories;
-            }
-
-            switch ( activity ) {
-
-                case 'Sedentary':
-                    calories *= 1.2;
-                    break;
-                case 'Lightly Active':
-                    calories *= 1.375;
-                    break;
-                case 'Moderately Active':
-                    calories *= 1.55;
-                    break;
-                case 'Very Active':
-                    calories *= 1.725;
-                    break;
-                default:
-                    calories;
-            }
-
-            switch ( goal ) {
-
-                case 'Lose Weight':
-                    calories -= calories * 0.2;
-                    break;
-                case 'Maintain Weight':
-                    calories;
-                    break;
-                case 'Gain Weight':
-                    calories += calories * 0.2;
-                    break;
-
-                default:
-                    calories;
-            }
-            calories = calories.toFixed( 0 );
-            return calories;
-        }
-
-
-        // funct calc macro % and resulting gramm by diet type
-        function calcMacroGrams( dietType ) {
-            // mult calories by car/fat/pro each diet type
-            macroGrams.protein = ( ( dietType.protein * calories ) / macrosCalPerGram.protein ).toFixed( 0 );
-
-            macroGrams.carb = ( ( dietType.carb * calories ) / macrosCalPerGram.carb ).toFixed( 0 );
-
-            macroGrams.fat = ( ( dietType.fat * calories ) / macrosCalPerGram.fat ).toFixed( 0 );
-
-            return macroGrams;
-        }
-
-        //funct calculates macro  based on diet type
-        function calcMacrosByDiet() {
-            switch ( $calcFormDiet ) {
-                case 'Low Carb':
-                    calcMacroGrams( dietLowCarb );
-                    break;
-                case 'Standard Balance':
-                    calcMacroGrams( dietNormal );
-                    break;
-                case 'Low Fat':
-                    calcMacroGrams( dietLowFat );
-                    break;
-                default:
-                    return;
-            }
-        }
-
-        //funct to append calories & macros to
-        //displays calories in appropriate div/container
-        function showCalcResults() {
-            $caloriesResult.text( calories );
-            $proteinResult.text( macroGrams.protein );
-            $carbResult.text( macroGrams.carb );
-            $fatResult.text( macroGrams.fat );
-        }
 
         function showSearchResults() {
             $foodSearchResult.text( foodNutrition.name );
@@ -257,6 +158,35 @@
                     optionsList.push( tempOption );
                 }
             } );
+            // console.log(optionsList);
+            deleteDuplicateFoods(optionsList);
+            // console.log(optionsList);
+        }
+
+
+        //FUNCTION: eliminate duplicate food options for optionsList array
+// BUG CANNOT REMOVE DUPLICATE OPTIONS FROM OPTIONS LIST ARRAY
+        function deleteDuplicateFoods (optionsListArray) {
+
+            let optionsListDupsRemoved = [];
+            // iterate through OptionsList array of objects
+
+            optionsList.forEach((foodOption)=>{
+
+                let foodOptionName = foodOption['OptionData']['name'];
+                optionsListDupsRemoved.push (foodOptionName);
+                //add each option object to new array if OptionData['name'] not already
+
+                optionsListDupsRemoved.forEach( (option)=>{
+
+                    if (foodOptionName === option) {
+
+                        optionsListArray.unshift(option)
+                    }
+                });
+            });
+            console.log(optionsListArray);
+            // optionsList = optionsListDupsRemoved;
         }
 
         //function to create url string for api request that includes the ingredient url encoded and the quantity and the size
@@ -284,39 +214,36 @@
         }
 
 
-        // function to loop through the $foodForBreakfast...arrays and group the p,c, f
+        // function to  group al P, C, F from the breakfast, lunch, dinner, snack
         // need arrays for each p,c,f and then get length of each to determine the qty of choices by group
-        function calcBuildListMacroGroupQtys( breakfast, lunch, dinner ) {
+        function calcBuildListMacroGroupQtys( breakfast, lunch, dinner, snack ) {
 
-             let allMeals = breakfast.concat(lunch, dinner );
-
+            let allMeals = breakfast.concat(lunch, dinner, snack );
             proteinChoices = [];
             carbChoices = [];
             fatChoices = [];
 
-                for (let i=0; i<allMeals.length; i ++) {
+                for (let i = 0; i < allMeals.length; i ++) {
+
                     let foodSelection = allMeals[i];
-
-
-
                     let $foodMacroType = $(foodSelection).attr('data-macrotype');
 
                     if ( $foodMacroType == "protein" ) {
-
                         proteinChoices.push( foodSelection );
-                    } else if ( $foodMacroType == "carb" ) {
+
+                    }
+                    else if ( $foodMacroType == "carb" ) {
                         carbChoices.push( foodSelection );
-                    } else {
+                    }
+                    else if ( $foodMacroType == "fat" ) {
                         fatChoices.push( foodSelection );
                     }
-
                 }
-
-                // console.log(proteinChoices, carbChoices, fatChoices);
+                // console.log(proteinChoices);
         }
 
         ///funct: calc the amount in lbs of all food chosen for week
-        function calcFoodAmountNeeded( choicesArray, foodEachChoice, foodType ) {
+        function calcFoodAmountNeeded( choicesArray, macroPerWeek, macro ) {
             //access the array of li for each P,C,F
 
             for ( let i = 0; i < choicesArray.length ;  i ++ ) {
@@ -325,19 +252,20 @@
                 //access the foodDataArray of food object data
                 for ( let j = 0; j < foodDataArray.length; j++ ) {
 
-
                     let $food = $( choicesArray[ i ] ).data( 'food' ) + "%20";
 
                     //match food object names to li text content
-                    if ( foodDataArray[ j ].name === $food ) {
-                        console.log(foodEachChoice);
-                        //calc how much of each to buy
-                        foodChoiceData.weight = ( ( ( foodEachChoice / foodDataArray[ j ][ foodType ] ) * foodDataArray[ j ].weight ) / 448 ).toFixed( 1 );
+                    if (foodDataArray[ j ].name === $food ){
+
                         //add name
                         foodChoiceData.name = foodDataArray[ j ].name.replace("%20", "");
 
+                        //calc how much of each to buy
+                        foodChoiceData.weight = ( ( ( macroPerWeek / foodDataArray[ j ][ macro ] ) * foodDataArray[ j ].weight ) / 448 ).toFixed( 1 );
+
                         //add food Choice to array
                         foodChoices.push( foodChoiceData );
+
 
                     }
 
@@ -351,51 +279,39 @@
         //funct: create the Grocery List based on the pro/carb/fat chose and cal/macros per day
         function createGroceryList() {
 
-            // REWORK THIS SECTION BUG no Grocery LI being added...check foodChoices array from function ABOVE
-
-            // choices of food for B, L, D in Build Lists
-            /// each is an array of foods from P, C, F categories
+            // choices of food for B, L, D, S in Build Lists
             let $foodForBreakfast = $( '#breakfastList li' ).toArray();
             let $foodForLunch = $( '#lunchList li' ).toArray();
             let $foodForDinner = $( '#dinnerList li' ).toArray();
+            let $foodForSnacks = $('#snackList li').toArray();
 
-
-
-            // console.log($foodForBreakfast,$foodForLunch, $foodForDinner);
-
-            //calc total grams needed per week o f each p, c, f
-            let proteinForWeek = macroGrams.protein * 7;
-            let carbForWeek = macroGrams.carb * 7;
-            let fatForWeek = macroGrams.fat * 7;
-
+            // console.log($foodForSnacks);
 
             // sorts all food chosen & stores into global variable: arrays
-            calcBuildListMacroGroupQtys( $foodForBreakfast, $foodForLunch, $foodForDinner );
+            calcBuildListMacroGroupQtys( $foodForBreakfast, $foodForLunch, $foodForDinner, $foodForSnacks );
 
             // calc grams per p,c,f perweek
-            let proteinEachChoice = proteinForWeek / ( proteinChoices.length );
-            let carbEachChoice = carbForWeek / ( carbChoices.length );
-            let fatEachChoice = fatForWeek / ( fatChoices.length );
+            let proteinEaChoicePerWk = ($RxproteinPerDay)*7  / ( proteinChoices.length );
+            let carbEaChoicePerWk = ($RxcarbPerDay)*7/ ( carbChoices.length );
+            let fatEaChoicePerWk = ($RxfatPerDay)*7 / ( fatChoices.length );
 
 
-            // match the P/C/F list items to the  food objects in foodDataArray.name
-            /// carbs
 
-            calcFoodAmountNeeded( carbChoices, carbEachChoice, "carb" );
+            calcFoodAmountNeeded( carbChoices, carbEaChoicePerWk, "carb" );
 
             //  fat
-            calcFoodAmountNeeded( fatChoices, fatEachChoice, "fat" );
+            calcFoodAmountNeeded( fatChoices, fatEaChoicePerWk, "fat" );
 
             //  protein
-            calcFoodAmountNeeded( proteinChoices, proteinEachChoice, "protein" );
+            calcFoodAmountNeeded( proteinChoices, proteinEaChoicePerWk, "protein" );
 
             ///remove existing grocery li
             $( '.groceryListItem' ).remove();
 
             var groceryListItem;
             ///loop through foodChoices array...
-            console.log(foodChoices);
 
+    // console.log(foodChoices);
             foodChoices.forEach( ( foodObject ) => {
 
                 groceryListItem = `<li class="collection-item dismissable groceryListItem">${foodObject.name}<i class="secondary-content material-icons">brightness_1</i>   ${foodObject.weight} LBS</li>`;
@@ -523,53 +439,33 @@
         } );
 
 
-        // LISTENER FOR Calc Form submission
+        // LISTENER FOR:  Rx Calorie & Macro Form submission
         $calcForm.submit( ( event ) => {
             event.preventDefault();
 
-            //get form vals
-            $calcFormSex = $calcFormSex.filter( ':selected' );
-            $calcFormSex = $calcFormSex.text();
-
-            $calcFormAge = parseInt( $calcFormAge.val() );
-
-            $calcFormHeight = $calcFormHeight.filter( ':selected' );
-            $calcFormHeight = parseInt( $calcFormHeight.attr( 'value' ) );
-
-            $calcFormWeight = parseInt( $calcFormWeight.val() * 0.45359237 );
-
-            $calcFormActivity = $calcFormActivity.filter( ':selected' );
-            $calcFormActivity = $calcFormActivity.text();
-
-            $calcFormGoal = $calcFormGoal.filter( ':selected' );
-            $calcFormGoal = $calcFormGoal.text();
-
-            $calcFormDiet = $calcFormDiet.filter( ':selected' );
-            $calcFormDiet = $calcFormDiet.text();
-
-            // insert these values into & call the calories function
-            calorieCalc( $calcFormSex, $calcFormAge, $calcFormWeight, $calcFormHeight, $calcFormActivity, $calcFormGoal );
-
-            //" "into and call the macros function
-            //
-
-            calcMacrosByDiet();
-            showCalcResults();
-
-            //shows results div
-            $caloriesMacroResult.fadeIn( 1500 );
+            $calcForm.hide();
+            $buildSection.fadeIn( 1500 );
             $( 'html, body' ).animate( {
-                scrollTop: $caloriesMacroResult.offset().top
+                scrollTop: $buildSection.offset().top
+            }, 2000 );
+
+            $RxcaloriesPerDay = parseInt( $RxcaloriesPerDay.val() );
+            $RxproteinPerDay= parseInt( $RxproteinPerDay.val() );
+            $RxcarbPerDay = parseInt( $RxcarbPerDay.val() );
+            $RxfatPerDay= parseInt( $RxfatPerDay.val() );
+
+        } );
+
+
+        // LISTENER FOR: Build Section Back Button
+        $buildSectionBackBtn .click( () => {
+            $buildSection.hide();
+            $calcForm.fadeIn( 2000 );
+            $( 'html, body' ).animate( {
+                scrollTop: $calcForm.offset().top
             }, 2000 );
 
         } );
-
-        // LISTENER FOR Results/Calc Form reset
-        $calcResultResetBtn.click( ( event ) => {
-            //hides results div
-            $caloriesMacroResult.hide();
-        } );
-
 
         // LISTENER for when links on BUILD card for breakfast clicked
         $buildLinkBreakfast.click( () => {
@@ -581,6 +477,7 @@
             }, 2000 );
 
         } );
+
 
         // LISTENER for when links on BUILD card for  lunch clicked
         $buildLinkLunch.click( () => {
@@ -604,6 +501,18 @@
 
         } );
 
+        // LISTENER for when links on BUILD card for dinner clicked
+        $buildLinkSnack.click( () => {
+
+            $buildCard.hide();
+            $buildForm.fadeIn( 1000 );
+            $buildSnack.fadeIn( 2000 );
+            $( 'html, body' ).animate( {
+                scrollTop: $buildForm.offset().top
+            }, 2000 );
+
+        } );
+
         //LISTENER for when BACK button clicked on build forms
         $buildBtnBack.click( () => {
             $buildCard.fadeIn( 1000 );
@@ -616,6 +525,7 @@
             $buildBreakfast.hide();
             $buildLunch.hide();
             $buildDinner.hide();
+            $buildSnack.hide();
         } );
 
 

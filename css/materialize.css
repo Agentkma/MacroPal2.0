@@ -2100,7 +2100,7 @@
 }
 
 .grey.darken-3 {
-  background-color: #424242 !important;
+  background-color: rgba(66, 66, 66, .7) !important;
 }
 
 .grey-text.text-darken-3 {

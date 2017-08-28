@@ -21,7 +21,7 @@
                 <a id="logo-container" href="#" class="brand-logo">MacroPal</a>
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#calculate">CALCULATE</a></li>
+                    <li><a href="#calculate">Rx</a></li>
                     <li><a href="#build">BUILD</a></li>
                     <li><a href="#search">SEARCH</a></li>
                 </ul>
@@ -31,7 +31,7 @@
     </div>
 
     <ul id="nav-mobile" class="side-nav">
-        <li><a href="#calculate">CALCULATE</a></li>
+        <li><a href="#calculate">Rx</a></li>
         <li><a href="#build">BUILD</a></li>
         <li><a href="#search">SEARCH</a></li>
     </ul>
@@ -46,7 +46,7 @@
                             <br><br>
                             <h1 class="header center orange-text">MacroPal</h1>
                             <div class="row center">
-                                <h5 id="callToAction" class="header col s12 light white-text ">Easily find your daily nutrition requirements, build shopping lists, and search food nutrition info.</h5>
+                                <h5 id="callToAction" class="header col s12 light white-text ">Use your Rx daily nutrition requirements to build shopping lists, and search food nutrition info.</h5>
                             </div>
                             <div class="row center">
                                 <span id="download-button" class="btn-large waves-effect darken-4 orange">Get Started</span>
@@ -62,131 +62,35 @@
     <main role="main" class="main">
         <div class="container">
             <section class="section_Calc">
-                <h1 hidden>Calculation Setion</h1>
+                <h1 hidden>Prescription Section</h1>
                 <div class="section">
                     <article class="">
-                        <!--  Calories/Macros Results-->
-                        <div class="row section_calc-submit">
-                            <div class=" col s12  ">
 
-                                <h2 class="center-align ">Calories & Macros</h2>
-                                <div class=" row card-panel orange calcSection_CalDiv">
-                                    <h4 class="white-text center-align ">Your personalized daily nutrition needs are:</h4>
-                                    <div class=" col m6 center-align">
-                                        <p>Total Calories: <span id="calories" class="article_submit-result calories "></span></p><br>
-                                        <p>Total Protein: <span id="protein" class="article_submit-result protein"></span> grams</p><br>
-                                    </div>
-                                    <div class=" col m6 center-align">
-                                        <p>Total Carbs: <span id="carb" class="article_submit-result carb "></span> grams</p><br>
-                                        <p>Total Fat: <span id="fat" class="article_submit-result fat "></span> grams</p><br>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="row center-align">
-                                <button id="calcResultReset" class="btn waves-effect orange  darken-4" type="submit" name="action">Reset
-                    <i class="material-icons right">send</i>
-                </button>
-                            </div>
-
-                            <!-- End CAL/MACRO RESULTS Section-->
-                            <h2 class="center grey darken-3  hide-on-large-only "><i class="material-icons ">flash_on</i></h2>
-                        </div>
-
-                        <!-- Calculate Form Section -->
+                        <!-- Rx Form Section -->
                         <div id="calculate" class="row calcForm">
-
+                            <h2 class="center  darken-3 grey-text "><i class="material-icons large ">input</i></h2>
                             <form class="col s12">
                                 <fieldset>
                                     <legend>
-                                        <h2>Calculate</h2></legend>
+                                        <h2>Calorie & Macro Rx</h2></legend>
                                     <div class="row">
                                         <div class="input-field col s12 m6">
-                                            <select class="form_select-sex  ">
-                                          <option value="" disabled selected >Choose your option</option>
-                                          <option value="male" class="orange-text" >Male</option>
-                                          <option value="female">Female</option>
-                                      </select>
-                                            <label>Sex</label>
+                                            <input id="caloriesRx" type="number" class="validate form_input-calories" placeholder="1200" required>
+                                            <label for="caloriesRx">Calories</label>
                                         </div>
-                                        <!-- </div>
-                                <div class="row"> -->
                                         <div class="input-field col s12 m6">
-                                            <input id="age" type="text" class="validate form_input-age">
-                                            <label for="age">Age</label>
+                                            <input id="proteinRx" type="number" class="validate form_input-protein" placeholder="125" required>
+                                            <label for="proteinRx">Protein/grams</label>
+                                        </div>
+                                        <div class="input-field col s12 m6">
+                                            <input id="carbRx" type="number" class="validate form_input-carb" placeholder="50" required>
+                                            <label for="carbRx">Carb/grams</label>
+                                        </div>
+                                        <div class="input-field col s12 m6">
+                                            <input id="fatRx" type="number" class="validate form_input-fat" placeholder="150">
+                                            <label for="fatRx">Fat/grams</label>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12 m6">
-                                            <select class="form_select-height">
-                              <option disabled selected value="" >Choose your option</option>
-                              <option value="149.86">4'11"</option>
-                              <option value="152.4">5'0"</option>
-                              <option value="154.94">5'1"</option>
-                              <option value="157.48">5'2"</option>
-                              <option value="160.02">5'3"</option>
-                              <option value="162.56">5'4"</option>
-                              <option value="165.1">5'5"</option>
-                              <option value="167.64">5'6"</option>
-                              <option value="170.18">5'7"</option>
-                              <option value="172.72">5'8"</option>
-                              <option value="175.26">5'9"</option>
-                              <option value="177.8">5'10"</option>
-                              <option value="180.34">5'11"</option>
-                              <option value="182.88">6'0"</option>
-                              <option value="185.42">6'1"</option>
-                              <option value="187.96">6'2"</option>
-                              <option value="190.5">6'3"</option>
-                              <option value="193.04">6'4"</option>
-                              <option value="195.58">6'5"</option>
-                              <option value="198.12">6'6"</option>
-                              <option value="200.66">6'7"</option>
-                            </select>
-                                            <label>Height</label>
-                                        </div>
-                                        <!-- </div>
-                                <div class="row"> -->
-                                        <div class="input-field col s12 m6">
-                                            <input id="weight" type="text" class="validate form_input-weight">
-                                            <label for="age">Weight/lbs</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="input-field col s12 m6">
-                                            <select class="form_select-activity">
-                              <option value="" disabled selected >Choose your option</option>
-                              <option value="1">Sedentary</option>
-                              <option value="2">Lightly Active</option>
-                              <option value="3">Moderately Active</option>
-                              <option value="4">Very Active</option>
-                            </select>
-                                            <label>Daily Activity Level</label>
-                                        </div>
-                                        <!-- </div>
-                                <div class="row"> -->
-                                        <div class="input-field col s12 m6">
-                                            <select class="form_select-goal">
-                              <option value="" disabled selected  >Choose your option</option>
-                              <option value="1">Lose Weight</option>
-                              <option value="2">Maintain Weight</option>
-                              <option value="3">Gain Weight</option>
-                            </select>
-                                            <label>Goals</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <select class="form_select-diet">
-                              <option value="" disabled selected  >Choose your option</option>
-                              <option value="1">Low Carb</option>
-                              <option value="2">Standard Balance</option>
-                              <option value="3">Low Fat</option>
-                            </select>
-                                            <label>Diet Type</label>
-                                        </div>
-                                    </div>
-
                                     <div class="row center-align">
                                         <button class="btn waves-effect orange  darken-4" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
@@ -203,10 +107,9 @@
             <section id="build" class="col s12 m6">
                 <h2 class="center  darken-3 grey-text "><i class="material-icons ">flash_on</i></h2>
 
-
                 <div class="card sticky-action " id="buildCard">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/headerbg.jpg" height="200rem">
+                        <img class="activator" src="img/headerbg.jpg" alt="pic of a group of people running with the orange glow of a sunset in the background" height="150px">
                     </div>
                     <div class="card-content buildCardLinks">
                         <span class="card-title activator grey-text text-darken-4"><h2>Build<i class="material-icons right">more_vert</i></h2></span>
@@ -220,8 +123,16 @@
                         <div class="card-action" id="dinner">
                             <a href="#dinnerList" id="linkBuildDinner">Dinner</a>
                         </div>
-                        <div class="row center-align ">
-                            <label for="btnSubmitBuildForm" class="btn waves-effect orange darken-4"><i class="material-icons right ">send</i>Submit</label>
+                        <div class="card-action" id="snack">
+                            <a href="#snackList" id="linkBuildSnack">Snack</a>
+                        </div>
+                        <div class="row  ">
+                            <div class=" col s6 left-align">
+                                <label id="buildSectionBackBtn" class="btn waves-effect orange darken-4"><i class="material-icons right ">undo</i>Back</label>
+                            </div>
+                            <div class="col s6 right-align">
+                                <label for="btnSubmitBuildForm" class="btn waves-effect orange darken-4"><i class="material-icons right ">send</i>Submit</label>
+                            </div>
 
                         </div>
 
@@ -238,9 +149,10 @@
                     <form class="col s12 buildForm ">
                         <fieldset class="foodOptionList">
                             <legend>
-                                <h2>Choose Your Foods</h2></legend>
-                            <div id="chooseBreakfast" class="input-field col s12  foodChosen breakfast">
+                                <h2>Choose Your Foods</h2>
+                            </legend>
 
+                            <div id="chooseBreakfast" class="input-field col s12  foodChosen breakfast">
                                 <select multiple class=" proteinChosen form_build-select ">
                                     <optgroup label="protein">
                                         <option value=" " disabled >Choose your option</option>
@@ -254,22 +166,22 @@
                                     <option value="2 " class="carb">Oatmeal</option>
                                     <option value="3 " class="carb">Spinach</option>
                                     <option value="4 " class="carb">Blueberry</option>
-                            </optgroup>
-                            <optgroup label="fat">
-                                <option value="5 " class="fat">Butter</option>
-                                <option value="6 " class="fat">Olive Oil</option>
-                                <option value="7 " class="fat">Cheddar Cheese</option>
-                                <option value="8 " class="fat">American Cheese</option>
-                            </optgroup>
-                                    <!-- <option value="5 " class="protein">Ground Turkey 90/10</option>
-                                    <option value="6 " class="protein">Beef Filet</option>
-                                    <option value="7 " class="protein">Beef Flank</option>
-                                    <option value="8 " class="protein">Beef Ribeye</option>
-                                    <option value="9 " class="protein">Beef Ground</option>
-                                    <option value="10 " class="protein">Fish Salmon Steak</option>
-                                    <option value="11 " class="protein">Fish Tuna Steak</option>
-                                    <option value="12 " class="protein">Fish Tilapia</option> -->
-                                </select>
+                                </optgroup>
+                                <optgroup label="fat">
+                                    <option value="5 " class="fat">Butter</option>
+                                    <option value="6 " class="fat">Olive Oil</option>
+                                    <option value="7 " class="fat">Cheddar Cheese</option>
+                                    <option value="8 " class="fat">American Cheese</option>
+                                </optgroup>
+                                        <!-- <option value="5 " class="protein">Ground Turkey 90/10</option>
+                                        <option value="6 " class="protein">Beef Filet</option>
+                                        <option value="7 " class="protein">Beef Flank</option>
+                                        <option value="8 " class="protein">Beef Ribeye</option>
+                                        <option value="9 " class="protein">Beef Ground</option>
+                                        <option value="10 " class="protein">Fish Salmon Steak</option>
+                                        <option value="11 " class="protein">Fish Tuna Steak</option>
+                                        <option value="12 " class="protein">Fish Tilapia</option> -->
+                                    </select>
                                 <label>Breakfast</label>
 
                                 <ul id="breakfastList" class="collection with-header foodChosenList proteinList">
@@ -280,12 +192,10 @@
 
                                 <a class="waves-effect orange darken-4 btn btnBackBuild"><i class="material-icons left ">cloud</i>BACK</a>
 
-
+                                <!-- End Breakfast Build Section -->
                             </div>
 
                             <div id="chooseLunch" class="input-field col s12 foodChosen lunch">
-                                <!-- <fieldset> -->
-
                                 <select multiple class=" carbChosen form_build-select ">
                                 <optgroup label="protein ">
                                     <option value=" " disabled >Choose your option</option>
@@ -295,27 +205,27 @@
                                     <option value="4 " class="protein">Salmon</option>
                                     <option value="5 " class="protein">Pork Tenderloin</option> -->
                                 </optgroup>
-                        <optgroup label="carb ">
-                            <option value="6 " class="carb" >Brown Rice</option>
-                            <option value="7 " class="carb">White Rice</option>
-                            <option value="8 " class="carb">White Potato</option>
-                            <!-- <option value="9 " class="carb">Sweet Potato</option>
-                            <option value="10 " class="carb">Pasta</option>
-                            <option value="11 " class="carb">Wheat Bread</option>
-                            <option value="12 " class="carb">Corn</option>
-                            <option value="13 " class="carb">Black Beans</option> -->
-                        </optgroup>
-                        <optgroup label="fat ">
-                            <option value="6 " class="fat" >Butter</option>
-                            <option value="7 " class="fat">Olive Oil</option>
-                            <option value="8 " class="fat">Coconut Oil</option>
-                            <!-- <option value="9 " class="carb">Sweet Potato</option>
-                            <option value="10 " class="carb">Pasta</option>
-                            <option value="11 " class="carb">Wheat Bread</option>
-                            <option value="12 " class="carb">Corn</option>
-                            <option value="13 " class="carb">Black Beans</option> -->
-                        </optgroup>
-                        </select>
+                                <optgroup label="carb ">
+                                    <option value="6 " class="carb" >Brown Rice</option>
+                                    <option value="7 " class="carb">White Rice</option>
+                                    <option value="8 " class="carb">White Potato</option>
+                                    <!-- <option value="9 " class="carb">Sweet Potato</option>
+                                    <option value="10 " class="carb">Pasta</option>
+                                    <option value="11 " class="carb">Wheat Bread</option>
+                                    <option value="12 " class="carb">Corn</option>
+                                    <option value="13 " class="carb">Black Beans</option> -->
+                                </optgroup>
+                                <optgroup label="fat ">
+                                    <option value="6 " class="fat" >Butter</option>
+                                    <option value="7 " class="fat">Olive Oil</option>
+                                    <option value="8 " class="fat">Coconut Oil</option>
+                                    <!-- <option value="9 " class="carb">Sweet Potato</option>
+                                    <option value="10 " class="carb">Pasta</option>
+                                    <option value="11 " class="carb">Wheat Bread</option>
+                                    <option value="12 " class="carb">Corn</option>
+                                    <option value="13 " class="carb">Black Beans</option> -->
+                                </optgroup>
+                                </select>
                                 <label>Lunch</label>
 
                                 <ul id="lunchList" class="collection with-header carbList foodChosenList ">
@@ -324,11 +234,11 @@
 
                                 </ul>
                                 <a class="waves-effect orange darken-4 btn btnBackBuild"><i class="material-icons left ">cloud</i>BACK</a>
-                                <!-- </fieldset> -->
+
+                                <!-- End Lunch Build Section -->
                             </div>
 
                             <div id="chooseDinner" class="input-field col s12 foodChosen dinner">
-                                <!-- <fieldset> -->
                                 <select multiple class="form_build-select fatChosen ">
                                         <optgroup label="protein">
                                     <option value=" " disabled >Choose your option</option>
@@ -367,16 +277,61 @@
                                 </ul>
 
                                 <a class="waves-effect orange darken-4 btn btnBackBuild"><i class="material-icons left ">cloud</i>BACK</a>
+                                <!-- End Dinner Build Section -->
                             </div>
-                            <button class="hidden" name="action " id="btnSubmitBuildForm">
-                        </button>
+
+                            <!-- Snacks -->
+                            <div id="chooseSnack" class="input-field col s12 foodChosen snack">
+                                <select multiple class="form_build-select snackChosen ">
+                                    <optgroup label="protein">
+                                        <option value=" " disabled >Choose your option</option>
+                                        <option value="1 " class="protein">Chicken Tenderloin</option>
+                                        <option value="2 " class="protein">Tuna Steak</option>
+                                        <option value="3 " class="protein">Turkey Breast</option>
+                                        <option value="4 " class="protein">Chicken Thigh</option>
+                                        <option value="5 " class="protein">Beef Filet</option>
+                                    </optgroup>
+                                    <optgroup label="carb">
+                                        <option value="6 " class="carb">strawberry</option>
+                                        <option value="7 " class="carb">apple</option>
+                                        <!-- <option value="8 " class="fat">Heavy Cream</option>
+                                        <option value="9 " class="fat">Whole Milk</option>
+                                        <option value="10 " class="fat">Skim Milk</option>
+                                        <option value="11 " class="fat">Greek Yogurt</option>
+                                        <option value="12 " class="fat">Cream Cheese</option>
+                                        <option value="13 " class="fat">Cottage Cheese</option> -->
+                                    </optgroup>
+                                    <optgroup label="fat">
+
+                                        <option value="8 " class="fat">pistachio</option>
+                                        <option value="9 " class="fat">almonds</option>
+                                        <option value="10 " class="fat">peanuts</option>
+                                        <!-- <option value="11 " class="fat">Greek Yogurt</option>
+                                        <option value="12 " class="fat">Cream Cheese</option>
+                                        <option value="13 " class="fat">Cottage Cheese</option> -->
+                                    </optgroup>
+                                </select>
+                                <label>Snack</label>
+
+                                <ul id="snackList" class="collection with-header  foodChosenList ">
+                                    <li>
+                                        <h4 class="collection-header ">Snack List</h4>
+                                    </li>
+                                </ul>
+
+                                <a class="waves-effect orange darken-4 btn btnBackBuild"><i class="material-icons left ">cloud</i>BACK</a>
+                                <!-- END Snack Build Section -->
+                            </div>
+
+                            <button class="hidden" name="action" id="btnSubmitBuildForm">
+                                </button>
                         </fieldset>
                     </form>
                 </div>
                 <!-- End Build Section -->
             </section>
 
-            <div class="row  ">
+            <div class="row">
 
                 <!-- Grocery List -->
                 <div class="col s12 section_GroceryList">
@@ -405,12 +360,16 @@
                 </div>
 
                 <!-- <div class="col s12 m6"> -->
-                <h2 class="center grey-text darken-3  hide-on-med-and-up"><i class="material-icons ">flash_on</i></h2>
+
 
                 <section class="section">
+
+
                     <!-- Search Food Section -->
                     <div id="search" class="row section_SearchFoods">
                         <div class="col s12">
+                            <h2 class="center grey-text darken-3  "><i class="material-icons large">search</i></h2>
+
                             <form id="searchFoodsForm" class="col s12 ">
 
                                 <fieldset>
@@ -469,8 +428,8 @@
 
                         <div class="col s12  ">
                             <div class="icon-block ">
-                                <h2 class="center  darken-3 grey-text "><i class="material-icons ">new_releases</i></h2>
-                                <h5 class="center ">Comming Soon...</h5>
+                                <h2 class="center  darken-3 grey-text "><i class="material-icons large">new_releases</i></h2>
+                                <h5 class="center ">Under Construction...</h5>
 
                                 <p class="light ">Add Snacks to your meal plan. Search foods and then add them to your food choices.</p>
                             </div>
