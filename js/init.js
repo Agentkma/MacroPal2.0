@@ -61,7 +61,7 @@
         //     fat: 0.20
         // };
 
-        let nutritionAPI = "https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/nutrition-data?app_id=bb5716a9&app_key=4934103f145a552494351407efdecfcf&ingr=1%20medium%20";
+
 
         //Constructor funct to create objects for optionsList array
         function OptionData( name ) {
@@ -165,28 +165,19 @@
 
 
         //FUNCTION: eliminate duplicate food options for optionsList array
-// BUG CANNOT REMOVE DUPLICATE OPTIONS FROM OPTIONS LIST ARRAY
         function deleteDuplicateFoods (optionsListArray) {
+            // console.log(optionsListArray[0]['name']);
+            for (let i=0; i < optionsListArray.length; i++) {
+                let option1 = optionsListArray[i]['name'];
 
-            let optionsListDupsRemoved = [];
-            // iterate through OptionsList array of objects
+                for (let j=i+1; j<optionsListArray.length; j++) {
+                    let option2 = optionsListArray[j]['name'];
+                    if ( option1 === option2) {
 
-            optionsList.forEach((foodOption)=>{
-
-                let foodOptionName = foodOption['OptionData']['name'];
-                optionsListDupsRemoved.push (foodOptionName);
-                //add each option object to new array if OptionData['name'] not already
-
-                optionsListDupsRemoved.forEach( (option)=>{
-
-                    if (foodOptionName === option) {
-
-                        optionsListArray.unshift(option)
+                    optionsListArray.splice(j, 1);
                     }
-                });
-            });
-            console.log(optionsListArray);
-            // optionsList = optionsListDupsRemoved;
+                }
+            }
         }
 
         //function to create url string for api request that includes the ingredient url encoded and the quantity and the size
@@ -265,14 +256,10 @@
 
                         //add food Choice to array
                         foodChoices.push( foodChoiceData );
-
-
                     }
-
                 }
             }
             // console.log(foodChoices);
-
         }
 
 
@@ -309,29 +296,26 @@
             $( '.groceryListItem' ).remove();
 
             var groceryListItem;
+
             ///loop through foodChoices array...
-
-    // console.log(foodChoices);
+            // console.log(foodChoices);
             foodChoices.forEach( ( foodObject ) => {
-
                 groceryListItem = `<li class="collection-item dismissable groceryListItem">${foodObject.name}<i class="secondary-content material-icons">brightness_1</i>   ${foodObject.weight} LBS</li>`;
                 $groceryList.append( groceryListItem );
             } );
 
-            //access each food object
-            // add each food to grocery list ul section as li
+
         }
 
         //funct : ajax request to get the nutrtion data for Build / Protein Fat / Carb option
         function ajaxApiBuildData() {
 
             $.each( urlEncodedOptionsArray, ( food ) => {
-
+                let nutritionAPI = "https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/nutrition-data?app_id=bb5716a9&app_key=4934103f145a552494351407efdecfcf&ingr=1%20medium%20";
                 let name = urlEncodedOptionsArray[ food ];
-                name = name.replace( '%20', ' ' );
-                name += "%20";
+
                 nutritionAPI += name;
-                // console.log( name );
+
                 $.ajax( {
                         type: "GET",
                         url: nutritionAPI,
@@ -339,27 +323,28 @@
                     } )
                     .then( function ( foodNutritionData ) {
                         /// access thereturned object data to store the appropriate nutrition
-
+                        // console.log(foodNutritionData);
                         let calories = foodNutritionData.calories;
                         let weight = foodNutritionData.totalWeight;
 
                         let fat = 0.01;
-                        if ( foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.FAT.quantity ) {
-                            fat = foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.FAT.quantity;
+                        // console.log( foodNutritionData.hasOwnProperty('ingredients[ 0 ].parsed[ 0 ].nutrients.FAT.quantity' ));
+                        if ( foodNutritionData.ingredients[ "0" ].parsed[ "0" ].nutrients.FAT.quantity ) {
+                            fat = foodNutritionData.ingredients[ "0" ].parsed[ "0" ].nutrients.FAT.quantity;
 
                         }
 
 
                         let carb = 0.01;
-                        if ( foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.CHOCDF ) {
-                            carb = foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.CHOCDF.quantity;
+                        if ( foodNutritionData.ingredients["0"  ].parsed[ "0" ].nutrients.CHOCDF ) {
+                            carb = foodNutritionData.ingredients[ "0" ].parsed[ "0" ].nutrients.CHOCDF.quantity;
                         }
 
 
                         let protein = 0.01;
 
-                        if ( foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.PROCNT.quantity ) {
-                            protein = foodNutritionData.ingredients[ 0 ].parsed[ 0 ].nutrients.PROCNT.quantity;
+                        if ( foodNutritionData.ingredients[ "0" ].parsed[ "0" ].nutrients.PROCNT.quantity ) {
+                            protein = foodNutritionData.ingredients[ "0" ].parsed[ "0" ].nutrients.PROCNT.quantity;
                         }
 
 
